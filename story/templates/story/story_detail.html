@@ -1,0 +1,25 @@
+{% extends 'story/base.html' %}
+{% block content %}
+
+        <div class="story">
+          <div class="date">
+            <span>published: {{ story.published_date}}</span>
+          </div>
+          <h1><a href="{% url 'story_detail' pk=story.pk %}">{{ story.sb_adj }}的人</a></h1>
+          <!--<p>{{ post.text|linebreaks }}</p>-->
+          <p>
+          {{ story.sb_gender }} 是一個 {{ story.sb_adv }} {{ story.sb_adj }} 的人，
+
+          因為{{ story.sb_gender }} {{ story.sb_about }} {{ story.sb_thing }}
+
+          {{ story.who }} 曾經做過一件很{{ story.sth_adj }}，
+
+          就是 {{ story.sb_story }}...
+
+          {{ story.itjcts }} 我在說那個人就是你，{{ story.sb_name }} {{ story.mark }}
+
+          </p>
+        </div>
+
+
+{% endblock %}
