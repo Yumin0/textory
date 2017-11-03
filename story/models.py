@@ -1,21 +1,6 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
-from multiselectfield import MultiSelectField
-from django.forms.models import ModelMultipleChoiceField
-
-
-#MY_CHOICES = (('item_key1', 'Item title 1.1'),
-#              ('item_key2', 'Item title 1.2'),
-
-
-#MY_CHOICES2 = ((1, 'Item title 2.1'),
-#               (2, 'Item title 2.2'),
-
-
-
-
-
 
 
 class Story(models.Model):
@@ -24,13 +9,6 @@ class Story(models.Model):
     sb_thing = models.CharField(max_length=30,null=True)
     sb_story = models.CharField(max_length=30,null=True)
     sb_name = models.CharField(max_length=30,null=True)
-
-
-    #my_field = MultiSelectField(null=True,choices=MY_CHOICES)
-    #my_field2 = MultiSelectField(null=True,choices=MY_CHOICES2,
-    #                             max_choices=3,
-    #                             max_length=3)
-
 
 
 
