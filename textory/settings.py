@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'story',
-    'multiselectfield',
 ]
 
 MIDDLEWARE_CLASSES = [
