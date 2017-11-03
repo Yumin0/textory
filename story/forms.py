@@ -2,11 +2,11 @@ from django import forms
 from .models import Story
 
 class StoryForm(forms.ModelForm):
-    story = forms.CharField(widget = forms.TextInput(
-        attrs = {
-        'class': 'form-control',
-        }
-    ))
+    sb_thing = forms.CharField(widget=forms.TextInput(attrs={'class':'el-input__inner el-input__inner_m'}))
+    sb_story = forms.CharField(widget=forms.TextInput(attrs={'class':'el-input__inner el-input__inner_m'}))
+    sb_name = forms.CharField(widget=forms.TextInput(attrs={'class':'el-input__inner el-input__inner_s'}))
+
+
 
     def __init__(self, *args, **kwargs):
          super(StoryForm, self).__init__(*args, **kwargs)
@@ -31,5 +31,5 @@ class StoryForm(forms.ModelForm):
             'sb_story',
             'itjcts',
             'sb_name',
-            'mark',
+            'mark'
         )

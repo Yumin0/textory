@@ -1,0 +1,24 @@
+{% extends 'story/base.html' %}
+
+{% block body %}
+<div class="container">
+  <h1>New story</h1>
+  <form method="POST" class="post-form">
+      {% csrf_token %}
+      {{ form.errors}}
+    <p>
+      {{ form.sb_gender }} 是一個 {{ form.sb_adv }} {{ form.sb_adj }} 的人，
+      <br><br>
+      因為{{ form.sb_gender }} {{ form.sb_about }} {{ form.sb_thing }}
+      <br><br>
+      {{ form.who }} 曾經做過一件很{{ form.sth_adj }}，
+      <br><br>
+      就是 {{ form.sb_story }}...
+      <br><br>
+      {{ form.itjcts }} 我在說那個人就是你，{{ form.sb_name }} {{ form.mark }}
+      <br>
+      <button type="submit" class="save btn btn-default">Save</button>
+    </p>
+  </form>
+</div>
+{% endblock %}

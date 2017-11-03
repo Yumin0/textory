@@ -1,25 +1,45 @@
-{% extends 'story/base.html' %}
-{% block content %}
-
-        <div class="story">
-          <div class="date">
-            <span>published: {{ story.published_date}}</span>
-          </div>
-          <h1><a href="{% url 'story_detail' pk=story.pk %}">{{ story.sb_adj }}的人</a></h1>
-          <!--<p>{{ post.text|linebreaks }}</p>-->
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Textory</title>
+        <meta charset="UTF-8">
+        <!-- 引入样式 -->
+        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+        <link rel="stylesheet" href="{% static 'css/story.css' %}">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    </head>
+	  <body style="background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);">
+        <div class="story_content">
           <p>
+          我有一個朋友
           {{ story.sb_gender }} 是一個 {{ story.sb_adv }} {{ story.sb_adj }} 的人，
-
+          <br>
           因為{{ story.sb_gender }} {{ story.sb_about }} {{ story.sb_thing }}
-
-          {{ story.who }} 曾經做過一件很{{ story.sth_adj }}，
-
+          <br>
+          {{ story.who }} 曾經做過一件很{{ story.sth_adj }}的事，
+          <br>
           就是 {{ story.sb_story }}...
-
+          <br>
           {{ story.itjcts }} 我在說那個人就是你，{{ story.sb_name }} {{ story.mark }}
-
           </p>
+          <div class="buttom">
+            {% if user.is_authenticated %}
+            <a href="{% url 'story_list' %}" class="write_button">返回</a>
+            {% else %}
+            <a href="{% url 'story_new' %}" class="write_button">我也有一個朋友</a>
+            {% endif %}
+            <br>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_url }}">
+              Share on Facebook
+            </a>
+            <span>Storyteller: {{ story.author.id }}</span>
+            {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'story_edit' pk=story.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            {% endif %}
+          </div>
         </div>
-
-
-{% endblock %}
+	  </body>
+</html>

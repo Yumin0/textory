@@ -1,0 +1,45 @@
+select {
+  height: 40px;
+  background: #fff;
+  border: 1px solid #d8dce5;
+}
+
+.el-input__inner_m {
+  width: 60%;
+}
+
+.el-input__inner_s {
+  width: 30%;
+}
+
+.story_content p{
+  text-align: center;
+  font-size: 35px;
+  margin-top: 200px;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.buttom {
+  margin: 200px 500px;
+  text-align: center;
+  color: #fff;
+}
+
+.gradient_bg {
+  background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+}
+
+.write_button {
+  padding: 15px 35px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background: transparent;
+  font-size: 18px;
+  color: #fff;
+}
+
+.write_button:hover {
+  background: #fff;
+  color: #b99bd8;
+}

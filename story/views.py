@@ -5,6 +5,7 @@ from .models import Story
 from .forms import StoryForm
 from django.forms import ModelChoiceField
 
+
 #def story_list(request):
 #    return render(request, 'story/story_list.html')
 
@@ -30,7 +31,7 @@ def story_new(request):
            return redirect('story_detail', pk=story.pk)
     else:
         form = StoryForm()
-    return render(request, 'story/story_edit.html', {'form': form})
+    return render(request, 'story/story_create.html', {'form': form})
 
 def story_edit(request, pk):
     story = get_object_or_404(Story, pk=pk)

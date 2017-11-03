@@ -1,15 +1,12 @@
 {% extends 'story/base.html' %}
-{% block content %}
 
+{% block body %}
+<div class="container">
   {% for story in storys %}
-		<div class="story">
-			<div class="date">
-				<span>published: {{ story.published_date}}</span>
-			</div>
-			<h1><a href="{% url 'story_detail' pk=story.pk %}">{{ story.sb_adj }} 的人</a></h1>
-			<!--<p>{{ post.text|linebreaks }}</p>-->
-
-		</div>
+    <div class="story">
+      <h1><a href="{% url 'story_detail' pk=story.pk %}">{{ story.sb_adj }} 的人</a></h1>
+      <!--<p>{{ story.text|linebreaks }}</p>-->
+    </div>
   {% endfor %}
-
+</div>
 {% endblock %}
