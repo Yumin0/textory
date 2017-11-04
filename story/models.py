@@ -10,8 +10,6 @@ class Story(models.Model):
     sb_story = models.CharField(max_length=30,null=True)
     sb_name = models.CharField(max_length=30,null=True)
 
-
-
     SB_GENDER = (
         ('他','他'),
         ('她','她'),
