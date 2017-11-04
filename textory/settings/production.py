@@ -24,7 +24,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY','s^x1=muagzvdpc57ta6*pk$dc_#wvq$7jwg00c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['text-story.herokuapp.com']
+ALLOWED_HOSTS = ['textory.herokuapp.com']
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'youremail@gmail.com'
