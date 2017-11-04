@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 #from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+
 #def home(request):
     #return render(request, 'account/home.html', args)
 
@@ -15,7 +16,7 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
                 form.save()
-                return redirect(reverse('accounts:home'))
+                return redirect('/hello')
     else:
         form = RegistrationForm()
 

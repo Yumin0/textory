@@ -4,11 +4,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Story
 from .forms import StoryForm
 from django.forms import ModelChoiceField
-
+from django.http import HttpResponse
 
 #def story_list(request):
 #    return render(request, 'story/story_list.html')
-
+def hello_world(request):
+    return render(request, 'hello.html',)
 
 def story_list(request):
     storys = Story.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
