@@ -141,6 +141,9 @@ STATICFILES_DIRS = (
 )
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 LOGIN_REDIRECT_URL = '/'
 
 CORS_REPLACE_HTTPS_REFERER      = True
