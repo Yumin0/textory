@@ -11,14 +11,22 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       {% block head %}
       <title>Base</title>
+      <style>
+      #id_wrapper {
+        min-height: 100%;
+        position: relative;
+        margin-bottom: 50px
+      }
+      </style>
       {% endblock %}
     </head>
     <body>
+      <div id="id_wrapper">
       <section>
         <nav class="nav">
           <div class="nav_container">
             <div class="nav_logo_box"><a class="navbar-brand" href="/"><img src="{% static 'img/textory_logo.png' %}"></a></div>
-            <div class="nav_buttons_box">
+            <div class="nav_buttons_bo;x">
               {% if user.is_authenticated %}
                 <a class="button_blank button" href="{% url 'account:view_profile' %}">Profile</a>
                 <a class="button_blank button" href="{% url 'account:logout' %}">Log out</a>
@@ -52,7 +60,7 @@
           </div>
         </div>
       </footer>
-
+    </div>
     </body>
     <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"

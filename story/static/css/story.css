@@ -75,11 +75,16 @@
     margin-bottom: 45px;
 }
 
-.index_page_info_paragraph {
-    font-size: 1em;
-    color: #6a6969;
-    line-height: 1.4;
-    text-align: center;
+.index_page_info_paragraph_title {
+  font-size:20px;
+}
+.index_page_info_paragraph_content_gray {
+  font-size:20px;
+  color:#ABABAB;
+}
+.index_page_info_paragraph_content_blue {
+  font-size:20px;
+  color:#00D7FF;
 }
 
 .footer_description_box--06 {
@@ -100,8 +105,6 @@
     letter-spacing: 0.05em;
     float: right;
 }
-
-
 
 select {
   height: 40px;

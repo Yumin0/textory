@@ -1,3 +1,9 @@
+#id_wrapper {
+  min-height: 100%;
+  position: relative;
+  margin-top: 100px;
+}
+
 .nav {
   position: fixed;
   z-index: 10;
@@ -57,7 +63,7 @@
 
 .index_page_info_section {
     position: fixed;
-    top: 88px;
+    top: 150px;
     left: 0;
     right: 0;
     transform: translateZ(0);
@@ -66,22 +72,39 @@
 }
 
 .container {
+    margin-top: 100px;
+    padding: 0 300px;
+}
+
+.index_container {
+    position: fixed;
+    top: 150px;
     max-width: 1320px;
     margin: auto;
-    padding: 0 30px;
+    padding: 0 300px;
 }
 
 .index_page_info_container {
     margin-bottom: 45px;
 }
 
-.index_page_info_paragraph {
-    font-size: 1em;
-    color: #6a6969;
-    line-height: 1.4;
-    text-align: center;
+.index_page_info_paragraph_title {
+  font-size:40px;
+  color:#ABABAB;
+  text-align: center;
+}
+.index_page_info_paragraph_content{
+  font-size:40px;
+  color:#ABABAB;
+}
+.index_page_info_paragraph_content_blue {
+  color:#00D7FF;
 }
 
+.footer {
+  position: relative;
+  background-color: white;
+}
 .footer_description_box--06 {
     padding: 23px 0 25px;
     border-top: 1px solid rgba(188,198,208,0.4);
@@ -126,7 +149,7 @@ select {
 }
 
 .buttom {
-  margin: 200px 500px;
+  margin: 100px 100px;
   text-align: center;
   color: #fff;
 }

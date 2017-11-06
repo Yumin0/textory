@@ -1,0 +1,33 @@
+{% extends 'story/base.html' %}
+{% load staticfiles %}
+
+
+{% block head %}
+  <style>
+  .index_container {
+      margin-top: 200px;
+      padding: 0 300px;
+  }
+  </style>
+{% endblock %}
+
+{% block body %}
+<section>
+  <div class="container">
+    <div class="index_page__info_container">
+      <div class="index_page__logo_box">
+      </div>
+      <div class="index_page_info_paragraph">
+        <p class="index_page_info_paragraph_title">我有一個朋友</p>
+        <p class="index_page_info_paragraph_content">她是一個
+        <span class="index_page_info_paragraph_content_blue">非常奇怪</span>
+        的人，因為她很喜歡
+        <span class="index_page_info_paragraph_content_blue">一個人默默地去公園吃榴蓮</span>
+        ，哈哈我在說那個人就是你，_______XD</p>
+
+        <p class="button">我要寫...</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
