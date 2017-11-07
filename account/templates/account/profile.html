@@ -10,9 +10,20 @@
     <h1>Profile</h1>
     <p>Username: {{ user }}</p>
     <p>User email :{{ user.email }}</p>
-    {% if user.story %}
-    全部故事{{ user.storys.all }}
+
+    {% if user.storys %}
+    <p>全部故事{{ user.storys.all }}</p>
     {% endif %}
+
+    {% if user.storys %}
+    {{ author.story_sb_name }}
+    {% endif %}
+    {% for story in storys %}
+      <div class="story">
+        <h1><a href="{% url 'story_detail' pk=story.pk %}">{{ story.sb_adj }} 的人</a></h1>
+        <!--<p>{{ story.text|linebreaks }}</p>-->
+      </div>
+    {% endfor %}
 </div>
 
 {% endblock %}

@@ -1,10 +1,14 @@
+from django.views.generic.list import ListView
 from django.shortcuts import render
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Story
+from .models import Story, StoryAuthor
 from .forms import StoryForm
 from django.forms import ModelChoiceField
 from django.http import HttpResponse
+from django.views import generic
+#from django.views.generic import ListView
+from django.contrib.auth.models import User
 
 #def story_list(request):
 #    return render(request, 'story/story_list.html')
@@ -14,6 +18,33 @@ def hello_world(request):
 def story_list(request):
     storys = Story.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'story/story_list.html', {'storys':storys})
+
+class StoryListbyAuthorView(generic.ListView):
+
+    """
+    Generic class-based view for a list of blogs posted by a particular StoryAuthor.
+    """
+    model = Story
+    template_name = 'story/story_list_by_author.html'
+
+    def get_queryset(self):
+        """
+        Return list of Blog objects created by StoryAuthor (author id specified in URL)
+        """
+        id = self.kwargs['pk']
+        target_author=get_object_or_404(StoryAuthor, pk = id)
+        return Story.objects.filter(author=target_author)
+
+    def get_context_data(self, **kwargs):
+        """
+        Add StoryAuthor to context so they can be displayed in the template
+        """
+        # Call the base implementation first to get a context
+        context = super(StoryListbyAuthorView, self).get_context_data(**kwargs)
+        # Get the blogger object from the "pk" URL parameter and add it to the context
+        context['author'] = get_object_or_404(StoryAuthor, pk = self.kwargs['pk'])
+        return context
+
 
 def story_detail(request, pk):
     story = get_object_or_404(Story, pk=pk)

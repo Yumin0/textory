@@ -8,5 +8,21 @@
       <!--<p>{{ story.text|linebreaks }}</p>-->
     </div>
   {% endfor %}
+  <h1>All bloggers</h1>
+
+    {% if storyauthor_list %}
+    <ul>
+
+      {% for author in storyauthor_list %}
+      <li>
+        <a href="{% url 'storys-by-author' author.pk %}">{{ author }}</a>
+      </li>
+      {% endfor %}
+
+    </ul>
+
+    {% else %}
+      <p>There are no bloggers yet.</p>
+    {% endif %}
 </div>
 {% endblock %}

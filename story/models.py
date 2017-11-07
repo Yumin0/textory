@@ -2,9 +2,29 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 
+class StoryAuthor(models.Model):
+    """
+    Model representing a author.
+    """
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+    #bio = models.TextField(max_length=400, help_text="Enter your bio details here.")
+
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular story-author instance.
+        """
+
+        return reverse('storys_by_author', args=[str(self.id)])
+
+    def __str__(self):
+        """
+        String for representing the Model object.
+        """
+        return self.user.username
 
 class Story(models.Model):
-    author = models.ForeignKey(User, related_name='storys')
+    author = models.ForeignKey(StoryAuthor, related_name='storys')
 
     sb_thing = models.CharField(max_length=30,null=True)
     sb_story = models.CharField(max_length=30,null=True)

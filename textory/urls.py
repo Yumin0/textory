@@ -26,5 +26,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^account/', include('account.urls')),
     url(r'', include('story.urls')),
-    url(r'^hello/$', hello_world),
+    url(r'^$', hello_world),
 ]

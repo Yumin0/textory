@@ -23,6 +23,7 @@ def register(request):
         args = {'form':form}
         return render(request,'account/reg_form.html', args)
 
+
 def view_profile(request):
     args = {'user':request.user}
 
