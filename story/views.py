@@ -54,10 +54,11 @@ def story_detail(request, pk):
 def story_new(request):
     if request.method == "POST":
        form = StoryForm(request.POST)
-
+       #form.StoryAuthor = request.user
        if form.is_valid():
            story = form.save(commit=False)
-           story.author = request.user
+           story.author, _ = StoryAuthor.objects.get_or_create(user=request.user)
+           #StoryAuthor = request.user
            story.published_date = timezone.now()
            story.save()
            return redirect('story_detail', pk=story.pk)
@@ -71,7 +72,8 @@ def story_edit(request, pk):
         form = StoryForm(request.POST, instance=story)
         if form.is_valid():
             story = form.save(commit=False)
-            story.author = request.user
+            StoryAuthor = request.user
+            #story.author = request.user
             story.published_date = timezone.now()
             story.save()
             return redirect('story_detail', pk=story.pk)

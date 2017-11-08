@@ -2,9 +2,9 @@ from django import forms
 from .models import Story
 
 class StoryForm(forms.ModelForm):
-    sb_thing = forms.CharField(widget=forms.TextInput(attrs={'class':'el-input__inner el-input__inner_m'}))
-    sb_story = forms.CharField(widget=forms.TextInput(attrs={'class':'el-input__inner el-input__inner_m'}))
-    sb_name = forms.CharField(widget=forms.TextInput(attrs={'class':'el-input__inner el-input__inner_s'}))
+    sb_thing = forms.CharField(widget=forms.TextInput(attrs={'class':'abc1 el-input__inner el-input__inner_m'}))
+    sb_story = forms.CharField(widget=forms.TextInput(attrs={'class':'abc2 el-input__inner el-input__inner_m'}))
+    sb_name = forms.CharField(widget=forms.TextInput(attrs={'class':'abc3 el-input__inner el-input__inner_s'}))
 
 
 

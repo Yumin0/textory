@@ -1,31 +1,15 @@
 {% extends 'story/base.html' %}
 {% block body %}
+    <h1>Profile</h1>
+    <h1>Storyteller #{{ author.id }}</h1>
 
-dl;malsem,l
-    <h1>Blogger: {{Author}}</h1>
-
-    <h3>Bio</h3>
-
-    <p>{{blogger.bio}}</p>
-
-
+    <p>Username: {{ author }}</p>
 
     {% if story_list %}
     <h3>Story list</h3>
-    <ul>
-
-      {% for story in story_list %}
-      <li>
-        <a href="{{ story.get_absolute_url }}">{{ story.sb_name }}</a> ({{story.post_date}})</a>
-      </li>
-      {% endfor %}
-
-    </ul>
 
     {% for story in story_list %}
-    <li>
-      <a href="{% url 'story_detail' pk=story.pk %}">{{ story.sb_name }}</a> ({{story.post_date}})</a>
-    </li>
+      <a href="{% url 'story_detail' pk=story.pk %}">{{ story.sb_name }}</a> {{story.post_date}}</a>
     {% endfor %}
 
     {% else %}

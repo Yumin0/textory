@@ -29,6 +29,11 @@
               <div class="nav_logo_box"><a class="navbar-brand" href="/"><img src="{% static 'img/textory_logo.png' %}"></a></div>
               <div class="nav_buttons_box">
                 {% if user.is_authenticated %}
+
+
+
+
+                  <p>Username: {{ user }}</p>
                   <a class="button_blank button" href="{% url 'account:view_profile' %}">Profile</a>
                   <a class="button_blank button" href="{% url 'account:logout' %}">Log out</a>
                   <a class="button" href="{% url 'story_new' %}">Add Story</a>

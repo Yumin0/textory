@@ -12,7 +12,7 @@ class StoryAuthor(models.Model):
 
     def get_absolute_url(self):
         """
-        Returns the url to access a particular story-author instance.
+        Returns the url to access a particular story_author instance.
         """
 
         return reverse('storys_by_author', args=[str(self.id)])
@@ -24,8 +24,8 @@ class StoryAuthor(models.Model):
         return self.user.username
 
 class Story(models.Model):
-    author = models.ForeignKey(StoryAuthor, related_name='storys')
-
+    author = models.ForeignKey(StoryAuthor, related_name='storys',null=True)
+    #author = models.ForeignKey(User, related_name='storys',null=True)
     sb_thing = models.CharField(max_length=30,null=True)
     sb_story = models.CharField(max_length=30,null=True)
     sb_name = models.CharField(max_length=30,null=True)
@@ -34,7 +34,7 @@ class Story(models.Model):
         ('他','他'),
         ('她','她'),
     )
-    sb_gender = models.CharField(max_length = 100,null=True,choices = SB_GENDER)
+    sb_gender = models.CharField(max_length = 100,null=True,choices = SB_GENDER, )
 
     SB_ADV = (
         ('有點','有點'),

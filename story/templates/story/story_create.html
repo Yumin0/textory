@@ -1,5 +1,11 @@
 {% extends 'story/base.html' %}
-
+{% block head %}
+  <style>
+  .abc1{width: 30%;}
+  .abc2{width: 40%;}
+  .abc3{width: 10%;}
+  </style>
+{% endblock %}
 {% block body %}
 <div class="container">
   <h1>New story</h1>
@@ -13,12 +19,18 @@
       <br><br>
       {{ form.who }} 曾經做過一件很{{ form.sth_adj }}，
       <br><br>
-      就是 {{ form.sb_story }}...
+      就是 {{ form.sb_story }}
       <br><br>
       {{ form.itjcts }} 我在說那個人就是你，{{ form.sb_name }} {{ form.mark }}
       <br>
       <button type="submit" class="save btn btn-default">Save</button>
     </p>
   </form>
+
+
 </div>
+<script>
+
+
+</script>
 {% endblock %}
