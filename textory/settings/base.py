@@ -77,6 +77,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -136,6 +139,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 LOGIN_REDIRECT_URL = '/'
