@@ -31,15 +31,19 @@ ALLOWED_HOSTS = ['textory.herokuapp.com','.textory.tw']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
+    'social_core',
     'account',
     'story',
     'storages',
+
+    'django.contrib.admin',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -53,6 +57,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'textory.middleware.LoginRequiredMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'textory.urls'
@@ -68,10 +73,22 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1877568685892013' # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '428302f36496cd32c34770be9b3781d2' # Facebook App Secret
+
 
 WSGI_APPLICATION = 'textory.wsgi.application'
 

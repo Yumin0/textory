@@ -33,6 +33,7 @@
                 <a class="button" href="{% url 'story_new' %}">Add Story</a>
               {% else %}
                 <a class="button_blank button" href="{% url 'account:login' %}">Login</a>
+                <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
                 <a class="button_blank button" href="{% url 'account:register' %}">Register</a>
               {% endif %}
             </div>

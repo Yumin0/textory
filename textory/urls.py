@@ -23,8 +23,10 @@ from textory import views
 from story.views import hello_world
 
 urlpatterns = [
+    url(r'social-auth/', include('social_django.urls', namespace='social')),
     url(r'^admin/', admin.site.urls),
     url(r'^account/', include('account.urls')),
     url(r'', include('story.urls')),
     url(r'^$', hello_world),
+    #url(r'^oauth/', include('social_django.urls', namespace='social')),    
 ]
