@@ -4,14 +4,29 @@
     <head>
         <title>Textory</title>
         <meta charset="UTF-8">
+
         <!-- 引入样式 -->
         <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
         <link rel="stylesheet" href="{% static 'css/story.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    <style>
+      .close{
+        position: fixed;
+        z-index: 652;
+        top: 16px;
+        right: 16px;
+        font-size: 50px;
+        color: #fff;
+      }
+    </style>
+
     </head>
 	  <body style="background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);">
+        <a href="{% url 'story_list' %}" class="close fa fa-times-circle fa-6"></a>
         <div class="story_content">
           <p>
           我有一個朋友
@@ -25,6 +40,8 @@
           <br>
           {{ story.itjcts }} 我在說那個人就是你，{{ story.sb_name }} {{ story.mark }}
           </p>
+
+
           <div class="buttom">
             {% if user.is_authenticated %}
             <a href="{% url 'story_list' %}" class="write_button">返回</a>
@@ -37,7 +54,7 @@
             </a>
             <span>Storyteller: {{ story.author.id }}</span>
             {% if user.is_authenticated %}
-            <a class="btn btn-default" href="{% url 'story_edit' pk=story.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="{% url 'story_edit' pk=story.pk %}" class="fa fa-pencil fa-4"></a>
             {% endif %}
           </div>
         </div>

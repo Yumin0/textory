@@ -45,6 +45,11 @@ class StoryListbyAuthorView(generic.ListView):
         context['author'] = get_object_or_404(StoryAuthor, pk = self.kwargs['pk'])
         return context
 
+class StoryAuthorListView(generic.ListView):
+    """
+    Generic class-based view for a list of bloggers.
+    """
+    model = StoryAuthor
 
 def story_detail(request, pk):
     story = get_object_or_404(Story, pk=pk)

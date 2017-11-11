@@ -1,18 +1,53 @@
 {% extends 'story/base.html' %}
-{% block body %}
-    <h1>Profile</h1>
-    <h1>Storyteller #{{ author.id }}</h1>
+{% block head %}
+<style>
+  .container {
+    width: 960px;
+  }
+  .about_page__tweet {
+    width: 440px;
+    padding: 10px 30px 40px 10px;
+    margin: 0 20px 20px 0;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #e1e8ed;
+    border-radius: 4px;
+  }
+</style>
+{% endblock %}
 
-    <p>Username: {{ author }}</p>
+{% block body %}
+  <div class="container">
+    <h1>This is Storyteller #{{ author.id }}</h1>
+
+    <p>Author: {{ author }}</p>
 
     {% if story_list %}
-    <h3>Story list</h3>
+    <h3>我的朋友</h3>
 
     {% for story in story_list %}
-      <a href="{% url 'story_detail' pk=story.pk %}">{{ story.sb_name }}</a> {{story.post_date}}</a>
+    <div class="about_page__tweet">
+      <a href="{% url 'story_detail' pk=story.pk %}" style="font-weight: 700;">{{ story.sb_name }}</a>
+      <br>
+      <p>
+      {{ story.sb_gender }} 是一個 {{ story.sb_adv }} {{ story.sb_adj }} 的人，
+
+      因為{{ story.sb_gender }} {{ story.sb_about }} {{ story.sb_thing }}
+
+      {{ story.who }} 曾經做過一件很{{ story.sth_adj }}的事，
+
+      就是 {{ story.sb_story }}
+      <br>
+      6:55 PM - Feb 13, 2017
+      </p>
+    </div>
     {% endfor %}
 
     {% else %}
       <p>This blogger hasn't posted anything yet.</p>
     {% endif %}
+  </div>
 {% endblock %}

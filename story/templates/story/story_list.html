@@ -1,28 +1,56 @@
 {% extends 'story/base.html' %}
 {% load staticfiles %}
+{% block head %}
+<style>
+  .container {
+    width: 960px;
+  }
+  .about_page__tweet {
+    width: 440px;
+    padding: 10px 30px 40px 10px;
+    margin: 0 20px 20px 0;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #e1e8ed;
+    border-radius: 4px;
+  }
+</style>
+{% endblock %}
+
 {% block body %}
+
 <div class="container">
   {% for story in storys %}
-    <div class="story">
-      <h1><a href="{% url 'story_detail' pk=story.pk %}">{{ story.sb_adj }} 的人</a></h1>
-      <!--<p>{{ story.text|linebreaks }}</p>-->
+    <div class="about_page__tweet">
+      <a href="{% url 'story_detail' pk=story.pk %}">{{ story.sb_adj }} 的人</a>
+      <p>
+      {{ story.sb_gender }} 是一個 {{ story.sb_adv }} {{ story.sb_adj }} 的人，
+
+      因為{{ story.sb_gender }} {{ story.sb_about }} {{ story.sb_thing }}
+
+      {{ story.who }} 曾經做過一件很{{ story.sth_adj }}的事，
+
+      就是 {{ story.sb_story }}
+      <br>
+      6:55 PM - Feb 13, 2017
+      </p>
     </div>
   {% endfor %}
-  <h1>All bloggers</h1>
 
-    {% if storyauthor_list %}
-    <ul>
 
-      {% for author in storyauthor_list %}
-      <li>
-        <a href="{% url 'storys-by-author' author.pk %}">{{ author }}</a>
-      </li>
-      {% endfor %}
+  <h1>All Authors</h1>
+  {% if storyauthor_list %}
+    {% for author in storyauthor_list %}
+      <a href="{% url 'storys_by_author' author.pk %}">{{ author }}</a>
+    {% endfor %}
+  {% else %}
+    <p>There are no storyauthors yet.</p>
+  {% endif %}
 
-    </ul>
 
-    {% else %}
-      <p>There are no bloggers yet.</p>
-    {% endif %}
+
 </div>
 {% endblock %}
