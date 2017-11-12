@@ -1,47 +1,288 @@
-{% extends 'story/base.html' %}
+<!DOCTYPE html>
 {% load staticfiles %}
+<html>
+    <head>
+      <link rel="stylesheet" href="{% static 'css/story.css' %}">
+      <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+      <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+      .page_wrapper {
+        min-height: 100vh;
+      }
+
+      .background {
+        position: absolute;
+        width: 100%;
+        overflow: hidden;
+        height: 100%;
+        bottom: -1px;
+        background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+      }
+
+      .background--top {
+        z-index: 15;
+        opacity: 0.5;
+      }
+
+      .background--mid {
+        z-index: 10;
+        opacity: 0.75;
+      }
+
+      .background--bot {
+        z-index: 5;
+      }
+
+      .wave {
+        position: absolute;
+        left: 0;
+        width: 200%;
+        height: 100%;
+        background-repeat: repeat no-repeat;
+        background-position: 0 bottom;
+        transform-origin: center bottom;
+      }
+
+      .wave--top {
+        background-size: 50% 100px;
+      }
+      .wave--mid {
+        background-size: 50% 120px;
+      }
+      .wave--bot {
+        background-size: 50% 100px;
+      }
 
 
-{% block head %}
-  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-  <style>
-  .index_container {
-      margin-top: 200px;
-      padding: 0 300px;
-  }
-  input {
-    padding: 15px;
-    align-self: center;
-    min-width: 80px;
-    max-width: 500px;
-  }
-  </style>
-{% endblock %}
+      .state-animation .wave--top {
+          animation: move_wave 5s linear infinite;
+      }
+      .state-animation .wave--mid {
+          animation: move_wave 10s linear infinite;
+      }
+      .state-animation .wave--bot {
+          animation: move_wave 15s linear infinite;
+      }
 
-{% block body %}
-<section>
-  <div class="container">
-    <div class="index_page__info_container">
-      <div class="index_page__logo_box">
+      @keyframes move_wave{
+        0% {transform: translateX(0) translateZ(0) scaleY(1);}
+
+        50% {transform: translateX(-25%) translateZ(0) scaleY(0.55);}
+
+        100% {transform: translateX(-50%) translateZ(0) scaleY(1);}
+      }
+
+      .index__intro_content {
+        position: relative;
+        z-index: 1000;
+        max-width: 762px;
+        padding: 0 30px;
+        margin: auto;
+        padding-top: 120px;
+        padding-bottom: 276px;
+      }
+
+      .index__intro_logo_box {
+        display: inline-block;
+        margin-bottom: 117px;
+      }
+
+      .index__intro_title {
+        margin-bottom: 40px;
+        font-family: "pn",Helvetica,Arial,sans-serif;
+        font-weight: 900;
+        font-size: 60px;
+        color: white;
+      }
+
+      .index__intro_subtitle {
+        font-family: "pn",Helvetica,Arial,sans-serif;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        color: rgba(255,255,255,0.7);
+        font-size: 21px;
+        line-height: 1.4;
+      }
+
+      .section-title {
+        margin-bottom: 90px;
+        color: #56567e;
+        font-size: 31px;
+        font-weight: 400;
+        text-align: center;
+      }
+
+      .case {
+        margin-bottom: 40px;
+      }
+
+      .case__title {
+        margin: 60px 0 50px;
+        color: #56567e;
+        font-size: 20px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+
+      .case__descr {
+        font-size: 14px;
+        line-height: 1.8;
+        color: #797a9b;
+        font-weight: 600;
+      }
+
+      .widget {
+        margin-bottom: 100px;
+        padding: 40px 200px;
+        border-radius: 12px;
+        background-color: #fff;
+        box-shadow: 0 6px 40px 0 rgba(43,43,69,.06), 0 12px 94.08px 1.92px rgba(43,43,69,.08);
+      }
+
+      footer {
+        padding: 70px 0 55px;
+        background: #414167;
+        background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+        text-align: center;
+      }
+
+      .copyrights {
+        display: block;
+        margin-bottom: 50px;
+        color: #686897;
+        font-size: 13px;
+        line-height: 2;
+        font-weight: 600;
+      }
+
+      .index_container {
+          margin-top: 200px;
+          padding: 0 300px;
+      }
+      input {
+        padding: 15px;
+        align-self: center;
+        min-width: 80px;
+        max-width: 500px;
+      }
+      </style>
+    </head>
+
+
+<body>
+<main class="page_wrapper">
+  <section>
+    <div class="index__intro_section">
+      <div class="index__intro_background_box">
+        <div class="background_box js-background state-animation">
+          <div class="background background--top">
+            <div class="wave wave--top" style="background-image:url('static/img/wave-top.png')"></div>
+          </div>
+          <div class="background background--mid">
+            <div class="wave wave--bot" style="background-image:url('static/img/wave-mid.png')"></div>
+          </div>
+          <div class="background background--bot">
+            <div class="wave wave--bot" style="background-image:url('static/img/wave-bot.png')"></div>
+          </div>
+        </div>
       </div>
-      <div class="index_page_info_paragraph">
-        <p class="index_page_info_paragraph_title">我有一個朋友</p>
-        <p class="index_page_info_paragraph_content">她是一個
-        <span class="index_page_info_paragraph_content_blue">非常奇怪</span>
-        的人，因為她很喜歡
-        <span class="index_page_info_paragraph_content_blue">一個人默默地去公園吃榴蓮</span>
-        ，哈哈我在說那個人就是你，_______
-        XD</p>
-        <p class="button">我要寫...</p>
+      <div class="index__intro_content">
+        <a class="index__intro_logo_box js-reach-goal" href="/">
+          <img src="{% static 'img/textory_logo_sm.png' %}">
+        </a>
+        <h1 class="index__intro_title">我有一個______的朋友</h1>
+        <h2 class="index__intro_subtitle">Textory希望能夠抽離聲音以及影像的外在干擾，讓大家可以透過最單純的文字想像，來一同認識生活周遭各式各樣奇奇怪怪的人！</h2>
       </div>
-
-      
-
-
-
     </div>
-  </div>
-</section>
+  </section>
+  <section>
+    <div class="use_cases">
+      <div class="container">
+        <h2 class="section-title">流程說明</h2>
+        <div class="cases">
+          <div class="row case case--blogger">
+            <div class="col-xs-8 col-sm-6 col-md-5 col-xs-offset-2 col-sm-offset-0 col-md-offset-1">
+              <img src="{% static 'img/follower.png' %}">
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-5">
+              <h3 class="case__title">步驟一：介紹你的朋友</h3>
+              <h5 class="case__descr">
+                使用者只要透過幾個選項的引導，就可以讓你用詼諧的方式來描述你的朋友是怎麼樣的人，立即創造一段專屬於你朋友的個人簡述
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="cases">
+          <div class="row case case--blogger">
+            <div class="col-xs-8 col-sm-6 col-md-5 col-xs-offset-2 col-sm-offset-0" style="float: right!important;">
+              <img src="{% static 'img/follower.png' %}">
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-5 col-md-offset-1">
+              <h3 class="case__title">步驟二：分享給更多人看</h3>
+              <h5 class="case__descr">
+                張貼到朋友臉書的動態牆，讓更多人了解你他/她的獨特性
+              </h5>
+            </div>
+          </div>
+        </div>
+        <div class="cases">
+          <div class="row case case--reverse case--follower">
+            <div class="col-xs-8 col-sm-6 col-md-5 col-xs-offset-2 col-sm-offset-0 col-md-offset-1">
+              <img src="{% static 'img/follower.png' %}">
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-5">
+              <h3 class="case__title">步驟三：誰來介紹我？</h3>
+              <h5 class="case__descr">
+                邀請你的身邊友人用文字的方式，敘述在對方心中的你又是個什麼樣的人
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="example">
+      <div class="container" style="margin-right: auto; margin-left: auto;">
+        <h2 class="section-title">Example</h2>
+        <div class="widgets row">
+          <div class="col-md-12 col-lg-12">
+            <div class="widget widget--users-talk">
+              <div class="widget__body">
+                <h4 style="font-weight:900;">標題: 我有一個朋友</h4>
+                <br>
+                <h4 style="line-height: 3;">內文: 她是一個
+                  <span style="border:1px solid #d2d2d2; padding:10px 20px; border-radius:5px;">非常奇怪</span>
+                    的人，因為她很喜歡
+                  <span style="border:1px solid #d2d2d2; padding:10px 20px; border-radius:5px;">一個人默默地去公園吃榴蓮</span>，
+                  哈哈我在說那個人就是你，
+                  <span style="border:1px solid #d2d2d2; padding:10px 20px; border-radius:5px;">______</span> XD</h4>
+                  <br>
+                  <a href="{% url 'story_new' %}" class="col-md-12 col-lg-12" style="border:1px solid #d2d2d2; padding:10px 20px; border-radius:5px; text-align:center;">Get started</a>
+                  <br>
+                  <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="container">
+      <div class="logo logo--footer">
+        <img src="{% static 'img/textory_logo_sm.png' %}">
+      </div>
+      <span class="copyrights">YuminH © 2017</span>
+    </div>
+  </footer>
+</main>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <!-- 引入组件库 -->
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
@@ -72,4 +313,5 @@
 
   inputWidth(targetElem);
 </script>
-{% endblock %}
+</body>
+</html>

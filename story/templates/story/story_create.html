@@ -17,7 +17,8 @@
 {% endblock %}
 {% block body %}
 <div class="container">
-  <h1>New story</h1>
+  <h1>介紹新朋友</h1>
+  <br>
   <form method="POST" class="post-form">
       {% csrf_token %}
       {{ form.errors}}
@@ -30,11 +31,11 @@
       <br><br>
       就是 {{ form.sb_story }}
       <br><br>
-      {{ form.itjcts }} 我在說那個人就是你，{{ form.sb_name }} {{ form.mark }} {{ form.tags }}
+      {{ form.itjcts }} 我在說那個人就是你，{{ form.sb_name }} {{ form.mark }}
       <br>
-      {{ form.tagsinput }}
       <button type="submit" class="save btn btn-default">Save</button>
     </p>
+    <br>
   </form>
 
 
