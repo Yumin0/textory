@@ -2,7 +2,7 @@ from django.views.generic.list import ListView
 from django.shortcuts import render
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Story, StoryAuthor
+from .models import Story, StoryAuthor, Tag
 from .forms import StoryForm
 from django.forms import ModelChoiceField
 from django.http import HttpResponse
@@ -65,6 +65,7 @@ def story_new(request):
            story.author, _ = StoryAuthor.objects.get_or_create(user=request.user)
            #StoryAuthor = request.user
            story.published_date = timezone.now()
+           story.tags = save_tagging(request.POST.getlist('tags', []))
            story.save()
            return redirect('story_detail', pk=story.pk)
     else:
@@ -85,3 +86,38 @@ def story_edit(request, pk):
     else:
         form = StoryForm(instance=story)
     return render(request, 'story/story_edit.html', {'form': form})
+
+def save_tagging(story_getlist_tags):
+    cleaned_tags = []
+    for value in story_getlist_tags:
+        slug = slugify(value)
+        if Tag.objects.filter(slug=slug).exists():
+            tag = Tag.objects.filter(slug=slug).first()
+            cleaned_tags.append(tag)
+        else:
+            # makesure the slug is not empty string.
+            # because I found the empty string is saved.
+            if bool(slug.strip()):
+                tag = Tag.objects.create(name=value, slug=slug)
+                tag.save()
+                cleaned_tags.append(tag)
+    return cleaned_tags
+
+
+import json as simplejson
+def tag_list(request):
+    if request.is_ajax():
+        q = request.GET.get('term', '')
+        tags= Tag.objects.filter(name__icontains = q )[:20]
+        results = []
+        for tag in tag:
+            tag_json = {}
+            tag_json['id'] = tag.id
+            tag_json['label'] = tag.name
+            tag_json['value'] = tag.name
+            results.append(tag_json)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
