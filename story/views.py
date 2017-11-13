@@ -2,7 +2,7 @@ from django.views.generic.list import ListView
 from django.shortcuts import render
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Story, StoryAuthor, Tag
+from .models import Story, StoryAuthor
 from .forms import StoryForm
 from django.forms import ModelChoiceField
 from django.http import HttpResponse
