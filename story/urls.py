@@ -10,5 +10,4 @@ urlpatterns = [
     url(r'^story/(?P<pk>[0-9]+)/$', views.story_detail, name='story_detail'),
     url(r'^story/new/$', views.story_new, name='story_new'),
     url(r'^story/(?P<pk>[0-9]+)/edit/$', views.story_edit, name='story_edit'),
-#    url(r'^story/get_tags', views.tag_list, name="tag_list")
 ]

@@ -42,7 +42,7 @@ class StoryForm(forms.ModelForm):
             'sb_story',
             'itjcts',
             'sb_name',
-            'mark',
+            'mark'
         )
     #def clean(self):
         # this condition only if the POST data is cleaned, right?
