@@ -65,7 +65,7 @@ def story_new(request):
            story.author, _ = StoryAuthor.objects.get_or_create(user=request.user)
            #StoryAuthor = request.user
            story.published_date = timezone.now()
-           story.tags = save_tagging(request.POST.getlist('tags', []))
+           #story.tags = save_tagging(request.POST.getlist('tags', []))
            story.save()
            return redirect('story_detail', pk=story.pk)
     else:
