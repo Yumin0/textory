@@ -1,43 +1,122 @@
-{% extends 'story/base.html' %}
-{% block head %}
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.3.5/bootstrap-tagsinput.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.3.5/bootstrap-tagsinput.js"></script>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <title>Textory</title>
+    <meta charset="UTF-8">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="{% static 'css/story.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+      body{
+        background: #F8F8F8;
+      }
+      .page_wrapper{
+        background: #F8F8F8;
+      }
+      .close{
+        position: fixed;
+        z-index: 652;
+        top: 16px;
+        right: 16px;
+        font-size: 50px;
+        color: #444242;
+      }
+      .container {
+        width: 960px;
+      }
+      .desc {
+        font-size: 35px;
+        color: #D8D8D8;
+        margin-top: 10px;
+      }
+      .abc1{
+        width: 30%;
+        background: #f1f1f1;
+        font-size: 20px;
+        height: 50px;
+        border: 1px solid #f1f1f1;
+        color: #D8D8D8;
+      }
+      .abc2{
+        width: 40%;
+        background: #f1f1f1;
+        font-size: 20px;
+        height: 50px;
+        border: 1px solid #f1f1f1;
+        color: #D8D8D8;
+      }
+      .abc3{
+        width: 10%;
+        background: #f1f1f1;
+        font-size: 20px;
+        height: 50px;
+        border: 1px solid #f1f1f1;
+        color: #D8D8D8;
+      }
 
-  <style>
-  .container {
-    width: 960px;
-  }
-  .abc1{width: 30%;}
-  .abc2{width: 40%;}
-  .abc3{width: 10%;}
-  </style>
-{% endblock %}
-{% block body %}
-<div class="container">
-  <h1>介紹新朋友</h1>
-  <br>
-  <form method="POST" class="post-form">
-      {% csrf_token %}
-      {{ form.errors}}
-    <p>
-      {{ form.sb_gender }} 是一個 {{ form.sb_adv }} {{ form.sb_adj }} 的人，
-      <br><br>
-      因為{{ form.sb_gender }} {{ form.sb_about }} {{ form.sb_thing }}
-      <br><br>
-      {{ form.who }} 曾經做過一件很{{ form.sth_adj }}，
-      <br><br>
-      就是 {{ form.sb_story }}
-      <br><br>
-      {{ form.itjcts }} 我在說那個人就是你，{{ form.sb_name }} {{ form.mark }}
-      <br>
-      <button type="submit" class="save btn btn-default">Save</button>
-    </p>
-    <br>
-  </form>
+      h1 {
+        text-align: center;
+        color: #D8D8D8;
+      }
 
+      p {
+        line-height:2;
+        letter-spacing:3px;
+      }
+      select {
+        background: #f1f1f1;
+        font-size: 20px;
+        height: 50px;
+        border: 1px solid #f1f1f1;
+        color: #D8D8D8;
+        outline: none;
+      }
 
-</div>
-{% endblock %}
+      .save{
+        color: #d8d8d8;
+        background-color: #f8f8f8;
+        height: 50px;
+        font-size: 20px;
+        border: 1px solid #f8f8f8;
+      }
+      .save:hover {
+      background-color: #d2d2d2;
+      color: white;
+      }
+
+      </style>
+  </head>
+  <body>
+    <main class="page_wrapper">
+      <a href="{% url 'story_list' %}" class="close fa fa-times-circle fa-6"></a>
+      <div class="container">
+        <h1>我有一個朋友</h1>
+        <br>
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+            {{ form.errors}}
+          <p>
+            {{ form.sb_gender }} <span class="desc">是一個</span> {{ form.sb_adv }} {{ form.sb_adj }} <span class="desc">的人，
+
+            因為</span>{{ form.sb_gender }} {{ form.sb_about }} {{ form.sb_thing }}
+
+            {{ form.who }} <span class="desc">曾經做過一件很</span>{{ form.sth_adj }}<span class="desc">的事，
+
+            就是</span> {{ form.sb_story }}
+
+            {{ form.itjcts }} <span class="desc">我在說那個人就是你，{{ form.sb_name }} {{ form.mark }}</span>
+            <br><br>
+            <button type="submit" class="col-md-12 col-lg-12 save btn">儲存</button>
+          </p>
+          <br>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
