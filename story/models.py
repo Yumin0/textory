@@ -23,15 +23,15 @@ class StoryAuthor(models.Model):
         """
         return self.user.username
 
-class Tag(models.Model):
-    name = models.CharField(max_length=20)
-    slug = models.SlugField(unique=True)
+#class Tag(models.Model):
+#    name = models.CharField(max_length=20)
+#    slug = models.SlugField(unique=True)
 
-    def __str__(self):
-        return self.name
+#    def __str__(self):
+#        return self.name
 
-    def get_absolute_url(self):
-        return reverse('story:tag_detail', kwargs={'tag_name': self.slug})
+#    def get_absolute_url(self):
+#        return reverse('story:tag_detail', kwargs={'tag_name': self.slug})
 
 class Story(models.Model):
     author = models.ForeignKey(StoryAuthor, related_name='storys',null=True)
@@ -40,7 +40,7 @@ class Story(models.Model):
     sb_story = models.CharField(max_length=30,null=True)
     sb_name = models.CharField(max_length=30,null=True)
     create_at = models.DateTimeField(auto_now_add=True,null=True)
-    tags = models.ManyToManyField(Tag, blank=True, related_name='tags_story')
+#    tags = models.ManyToManyField(Tag, blank=True, related_name='tags_story')
     #tags = models.CharField('Tag', blank=True)
 
 
