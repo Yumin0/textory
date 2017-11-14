@@ -9,7 +9,10 @@ body {
 }
 .container {
   width: 1280px;
-
+  margin-bottom: 100px;
+}
+.box {
+  margin-bottom: 20px;
 }
 .about_page__tweet {
   width: 230px;
@@ -42,10 +45,6 @@ a {
 {% block body %}
 
 <div class="container">
-  <form method='GET' action=''>
-  <input type='text' name='q' placeholder='Search stories'/>
-  <input type='submit' value='Search'>
-  </form>
   <div class="box">
     <a class="button_blank button" href="{% url 'story_list' %}">故事</a>
     <a class="button_blank button" href="{% url 'storyauthors' %}">作者</a>
@@ -67,7 +66,6 @@ a {
 
       就是 {{ story.sb_story }}
       <br>
-      <i class="fa fa-heart-o" aria-hidden="true"></i>
       </p>
     </div>
   </a>

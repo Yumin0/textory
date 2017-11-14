@@ -1,21 +1,43 @@
 {% extends 'story/base.html' %}
 {% block head %}
 <style>
-  .container {
-    width: 960px;
-  }
-  .about_page__tweet {
-    width: 280px;
-    padding: 40px 30px 40px 48px;
-    margin: 0 20px 20px 0;
-    display: inline-block;
-    vertical-align: top;
-    overflow: hidden;
-    cursor: pointer;
-    background-color: #fff;
-    border: 1px solid #e1e8ed;
-    border-radius: 4px;
-  }
+body {
+  background: #F9F9F9;
+}
+.container {
+  width: 1280px;
+  margin-bottom: 100px;
+}
+
+.box {
+  margin-bottom: 20px;
+}
+
+.about_page__tweet {
+  width: 150px;
+  height: 150px;
+  padding: 40px 30px 40px 30px;
+  margin: 0 10px 10px 0;
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #efefef;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.about_page__tweet:hover {
+  width: 155px;
+  height: 155px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+a {
+  color: inherit;
+}
 </style>
 {% endblock %}
 
@@ -26,11 +48,16 @@
       <a class="button_blank button" href="{% url 'storyauthors' %}">作者</a>
       <a class="button" href="{% url 'story_new' %}">新增故事</a>
     </div>
-    <h1>All storyauthors</h1>
 
     {% if storyauthor_list %}
       {% for author in storyauthor_list %}
-        <a href="{% url 'storys_by_author' author.pk %}">{{ author }}</a>
+        <a href="{% url 'storys_by_author' author.pk %}">
+          <div class="about_page__tweet">
+          <br>
+          Storyteller #{{ author.id }}
+          <br><br>
+          </div>
+        </a>
       {% endfor %}
     {% else %}
       <p>There are no storyauthors yet.</p>

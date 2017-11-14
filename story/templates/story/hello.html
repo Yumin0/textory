@@ -10,6 +10,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <style>
+      @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
       .page_wrapper {
         min-height: 100vh;
       }
@@ -91,6 +92,23 @@
         margin-bottom: 117px;
       }
 
+      .exam-input1 {
+        width: 150px !important;
+      }
+      .exam-input1 input {
+        height: 50px;
+        color: #b4bccc;
+        font-size: 30px;
+        width: 100%;
+      }
+
+      .exam-input3 input {
+        height: 50px;
+        color: #b4bccc;
+        font-size: 30px;
+        width: 400px;
+      }
+
       .el-input {
         width: 25%;
         font-size: 40px;
@@ -151,10 +169,27 @@
 
       .widget {
         margin-bottom: 100px;
-        padding: 40px 200px;
+        padding: 40px 100px 80px;
         border-radius: 12px;
         background-color: #fff;
         box-shadow: 0 6px 40px 0 rgba(43,43,69,.06), 0 12px 94.08px 1.92px rgba(43,43,69,.08);
+      }
+
+      .start-btn {
+        font-size: 20px;
+        border:1px solid #f3f3f4;
+        padding:20px 20px;
+        border-radius:5px;
+        text-align:center;
+        text-decoration: none;
+        background: #f3f3f4
+      }
+      .start-btn a{
+        color: inherit;
+      }
+      .start-btn:hover{
+        text-decoration: none;
+        background: #e6e6e8;
       }
 
       footer {
@@ -220,7 +255,7 @@
         <div class="cases">
           <div class="row case case--blogger">
             <div class="col-xs-8 col-sm-6 col-md-5 col-xs-offset-2 col-sm-offset-0 col-md-offset-1">
-              <img src="{% static 'img/follower.png' %}">
+              <img src="{% static 'img/post.png' %}">
             </div>
             <div class="col-xs-12 col-sm-6 col-md-5">
               <h3 class="case__title">步驟一：介紹你的朋友</h3>
@@ -239,18 +274,6 @@
               <h3 class="case__title">步驟二：分享給更多人看</h3>
               <h5 class="case__descr">
                 張貼到朋友臉書的動態牆，讓更多人了解你他/她的獨特性
-              </h5>
-            </div>
-          </div>
-        </div>
-        <div class="cases">
-          <div class="row case case--reverse case--follower">
-            <div class="col-xs-8 col-sm-6 col-md-5 col-xs-offset-2 col-sm-offset-0 col-md-offset-1">
-              <img src="{% static 'img/follower.png' %}">
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-5">
-              <h3 class="case__title">步驟三：誰來介紹我？</h3>
-              <h5 class="case__descr">
                 邀請你的身邊友人用文字的方式，敘述在對方心中的你又是個什麼樣的人
               </h5>
             </div>
@@ -262,21 +285,22 @@
   <section>
     <div class="example">
       <div class="container" style="margin-right: auto; margin-left: auto;">
-        <h2 class="section-title">Example</h2>
+        <h2 class="section-title">範例</h2>
         <div class="widgets row">
           <div class="col-md-12 col-lg-12">
             <div class="widget widget--users-talk">
               <div class="widget__body">
                 <h4 style="font-weight:900;">標題: 我有一個朋友</h4>
                 <br>
-                <h4 style="line-height: 3;">內文: 她是一個
-                  <span style="border:1px solid #d2d2d2; padding:10px 20px; border-radius:5px;">非常奇怪</span>
-                    的人，因為她很喜歡
-                  <span style="border:1px solid #d2d2d2; padding:10px 20px; border-radius:5px;">一個人默默地去公園吃榴蓮</span>，
-                  哈哈我在說那個人就是你，
-                  <span style="border:1px solid #d2d2d2; padding:10px 20px; border-radius:5px;">______</span> XD</h4>
+                <h4 style="line-height: 3; font-family: Noto Sans TC; font-weight:300;">內文: 她是一個
+                  <span id="app2"><el-input  class="exam-input1" v-model="input" placeholder="非常奇怪"></el-input></span>
+                  &nbsp; &nbsp; 的人，因為她很喜歡
+                  <span id="app3"><el-input  class="exam-input3" v-model="input" placeholder="一個人默默地去公園吃榴蓮"></el-input></span>&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; ，
                   <br>
-                  <a href="{% url 'story_list' %}" class="col-md-12 col-lg-12" style="border:1px solid #d2d2d2; padding:10px 20px; border-radius:5px; text-align:center;">Get started</a>
+                  哈哈我在說那個人就是你，
+                  <span id="app4"><el-input  class="exam-input1" v-model="input" placeholder="XXX" ></el-input></span> &nbsp; &nbsp;&nbsp; &nbsp;XD</h4>
+                  <br>
+                  <a href="{% url 'story_list' %}" class="col-md-12 col-lg-12 start-btn">進入</a>
                   <br>
                   <br>
               </div>
@@ -310,6 +334,39 @@
     }
     var Ctor = Vue.extend(Main)
     new Ctor().$mount('#app')
+  </script>
+  <script>
+    var Main = {
+      data() {
+        return {
+          input: ''
+        }
+      }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app2')
+  </script>
+  <script>
+    var Main = {
+      data() {
+        return {
+          input: ''
+        }
+      }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app3')
+  </script>
+  <script>
+    var Main = {
+      data() {
+        return {
+          input: ''
+        }
+      }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app4')
   </script>
 
 

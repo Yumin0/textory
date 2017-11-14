@@ -43,19 +43,12 @@
 
 
           <div class="buttom">
-            {% if user.is_authenticated %}
-            <a href="{% url 'story_list' %}" class="write_button">返回</a>
-            {% else %}
-            <a href="{% url 'story_new' %}" class="write_button">我也有一個朋友</a>
-            {% endif %}
             <br>
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_url }}">
-              <i class="fa fa-facebook" aria-hidden="true" style="color:#fff;"></i>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_url }}" class="write_button">
+              <i class="fa fa-facebook" aria-hidden="true"> 分享到朋友動態牆</i>
             </a>
+            <br><br><br>
             <span>Storyteller: {{ story.author.id }}</span>
-            {% if user.is_authenticated %}
-            <a href="{% url 'story_edit' pk=story.pk %}" class="fa fa-pencil fa-4"></a>
-            {% endif %}
           </div>
         </div>
 	  </body>
