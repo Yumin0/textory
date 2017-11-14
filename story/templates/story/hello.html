@@ -91,6 +91,20 @@
         margin-bottom: 117px;
       }
 
+      .el-input {
+        width: 25%;
+        font-size: 40px;
+        color: #fff;
+      }
+
+      .el-input__inner {
+        height: 70px;
+        background-color: transparent;
+        border-bottom: 1px solid #fff;
+        color: #ffffff;
+        margin: 10px 10px 10px 10px;
+      }
+
       .index__intro_title {
         margin-bottom: 40px;
         font-family: "pn",Helvetica,Arial,sans-serif;
@@ -194,7 +208,7 @@
         <a class="index__intro_logo_box js-reach-goal" href="/">
           <img src="{% static 'img/textory_logo_sm.png' %}">
         </a>
-        <h1 class="index__intro_title">我有一個______的朋友</h1>
+        <h1 class="index__intro_title">我有一個&nbsp;<span id="app"><el-input v-model="input" placeholder="很有趣"></el-input></span> &nbsp;的朋友</h1>
         <h2 class="index__intro_subtitle">Textory希望能夠抽離聲音以及影像的外在干擾，讓大家可以透過最單純的文字想像，來一同認識生活周遭各式各樣奇奇怪怪的人！</h2>
       </div>
     </div>
@@ -286,6 +300,19 @@
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <!-- 引入组件库 -->
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <script>
+    var Main = {
+      data() {
+        return {
+          input: ''
+        }
+      }
+    }
+    var Ctor = Vue.extend(Main)
+    new Ctor().$mount('#app')
+  </script>
+
+
   <script>
   $.fn.textWidth = function(text, font) {
 

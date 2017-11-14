@@ -2,21 +2,39 @@
 {% load staticfiles %}
 {% block head %}
 <style>
-  .container {
-    width: 960px;
-  }
-  .about_page__tweet {
-    width: 440px;
-    padding: 10px 30px 40px 10px;
-    margin: 0 20px 20px 0;
-    display: inline-block;
-    vertical-align: top;
-    overflow: hidden;
-    cursor: pointer;
-    background-color: #fff;
-    border: 1px solid #e1e8ed;
-    border-radius: 4px;
-  }
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+body {
+  background: #F9F9F9;
+}
+.container {
+  width: 1280px;
+
+}
+.about_page__tweet {
+  width: 230px;
+  height: 230px;
+  padding: 25px 30px 40px 25px;
+  margin: 0 10px 10px 0;
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #efefef;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.about_page__tweet:hover {
+  width: 235px;
+  height: 235px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+a {
+  color: inherit;
+}
 </style>
 {% endblock %}
 
@@ -24,9 +42,13 @@
 
 <div class="container">
   {% for story in storys %}
+  <a href="{% url 'story_detail' pk=story.pk %}">
     <div class="about_page__tweet">
-      <a href="{% url 'story_detail' pk=story.pk %}">{{ story.sb_adj }} 的人</a>
-      <p>
+      <span>Feb 13, 2017</span>
+      <br>
+      {{ story.sb_adj }} 的人
+      <br><br>
+      <p style="font-size:14px; font-family: Noto Sans TC; font-weight: 300; color:#878d99;">
       {{ story.sb_gender }} 是一個 {{ story.sb_adv }} {{ story.sb_adj }} 的人，
 
       因為{{ story.sb_gender }} {{ story.sb_about }} {{ story.sb_thing }}
@@ -35,9 +57,9 @@
 
       就是 {{ story.sb_story }}
       <br>
-      6:55 PM - Feb 13, 2017
       </p>
     </div>
+  </a>
   {% endfor %}
 
 

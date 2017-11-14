@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block body %}
-<div class="container">
-    <h1>Register</h1>
+<div class="container" style="text-align:center;">
+    <h1>註冊</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

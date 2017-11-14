@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block body %}
-<div class="container">
-    <h1>Welcome</h1>
-    <p>
-        You can log in here!
-    </p>
-    <h2>Login</h2>
-    <form method="post">
+<div class="container" style="text-align:center;">
+    <h1>登入</h1>
+        <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        姓名：{{ form.username }}
+        <br><br>
+        密碼:{{ form.password }}
         <button type="submit">Login</button>
     </form>
 </div>

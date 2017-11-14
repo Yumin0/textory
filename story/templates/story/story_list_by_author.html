@@ -1,6 +1,7 @@
 {% extends 'story/base.html' %}
 {% block head %}
 <style>
+  @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
   body {
     background: #F9F9F9;
   }
@@ -52,7 +53,7 @@
       <br>
       {{ story.sb_name }}
       <br><br>
-      <p style="font-size:16px;">
+      <p style="font-size:14px; font-family: Noto Sans TC; font-weight: 300; color:#878d99;">
       {{ story.sb_gender }} 是一個 {{ story.sb_adv }} {{ story.sb_adj }} 的人，
 
       因為{{ story.sb_gender }} {{ story.sb_about }} {{ story.sb_thing }}
