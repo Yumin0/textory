@@ -67,6 +67,16 @@ class Story(models.Model):
         ('有病','有病'),
         ('自戀','自戀'),
         ('搞笑','搞笑'),
+        ('孤僻','孤僻'),
+        ('嚴肅','嚴肅'),
+        ('無趣','無趣'),
+        ('冷靜','冷靜'),
+        ('可怕','可怕'),
+        ('呆呆','呆呆'),
+        ('萌萌','萌萌'),
+        ('厲害','厲害'),
+        ('正常','正常'),
+        ('懶惰','懶惰'),
     )
     sb_adj = models.CharField(max_length = 100,null=True,choices = SB_ADJ)
 
@@ -77,6 +87,7 @@ class Story(models.Model):
         ('討厭','討厭'),
         ('怕','怕'),
         ('常常','常常'),
+        ('很會','很會'),
     )
     sb_about = models.CharField(max_length = 100,null=True,choices = SB_ABOUT)
 
@@ -113,6 +124,7 @@ class Story(models.Model):
     MARK = (
         ('~','~'),
         ('!','!'),
+        ('!!!','!!!'),
         ('XD','XD'),
         ('>///<','>///<'),
         ('^^','^^'),
