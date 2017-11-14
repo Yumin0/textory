@@ -1,6 +1,7 @@
 {% extends 'story/base.html' %}
 {% load staticfiles %}
 {% block head %}
+
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
 body {
@@ -41,10 +42,19 @@ a {
 {% block body %}
 
 <div class="container">
+  <form method='GET' action=''>
+  <input type='text' name='q' placeholder='Search stories'/>
+  <input type='submit' value='Search'>
+  </form>
+  <div class="box">
+    <a class="button_blank button" href="{% url 'story_list' %}">故事</a>
+    <a class="button_blank button" href="{% url 'storyauthors' %}">作者</a>
+    <a class="button" href="{% url 'story_new' %}">新增故事</a>
+  </div>
   {% for story in storys %}
   <a href="{% url 'story_detail' pk=story.pk %}">
     <div class="about_page__tweet">
-      <span>Feb 13, 2017</span>
+      <span>{{ story.created_at|date:"Y / m / d" }}</span>
       <br>
       {{ story.sb_adj }} 的人
       <br><br>
@@ -57,22 +67,14 @@ a {
 
       就是 {{ story.sb_story }}
       <br>
+      <i class="fa fa-heart-o" aria-hidden="true"></i>
       </p>
     </div>
   </a>
   {% endfor %}
-
-
-  <h1>All Authors</h1>
-  {% if storyauthor_list %}
-    {% for author in storyauthor_list %}
-      <a href="{% url 'storys_by_author' author.pk %}">{{ author }}</a>
-    {% endfor %}
-  {% else %}
-    <p>There are no storyauthors yet.</p>
-  {% endif %}
-
-
-
 </div>
+<script src="//unpkg.com/vue/dist/vue.js"></script>
+<script src="//unpkg.com/element-ui@2.0.4/lib/index.js"></script>
+
+
 {% endblock %}

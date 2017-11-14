@@ -1,10 +1,22 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% block head %}
+<style>
+body {
+  background: #F9F9F9;
+}
+.container {
+  width: 1280px;
+  margin-top:0px;
+  height: 500px;
+}
+
+</style>
+{% endblock %}
 {% block body %}
 <div class="container">
-    <h1>Logged out</h1>
-    <p>
-        You have logged out!
-    </p>
+    <h3 style="text-align:center;">你已登出</h3>
+
+    <a href="{% url 'story_list' %}"><p style="text-align:center; font-size:20px;">回首頁</p></a>
 </div>
 {% endblock %}

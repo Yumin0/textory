@@ -10,8 +10,7 @@
   left: 0;
   right: 0;
   top: 0;
-  border-bottom: 1px solid #ebebeb;
-  background-color: rgba(255,255,255,0.9);
+  background-color: #f9f9f9;
 }
 
 .nav_container {
@@ -24,7 +23,7 @@
   align-items: center;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  height: 87px;
+  height: 65px;
 }
 
 .nav_logo_box {
@@ -103,11 +102,10 @@
 
 .footer {
   position: relative;
-  background-color: white;
+  background-color: #f9f9f9;
 }
 .footer_description_box--06 {
-    padding: 23px 0 25px;
-    border-top: 1px solid rgba(188,198,208,0.4);
+  padding: 23px 0 25px;
 }
 
 .footer_container {

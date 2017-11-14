@@ -39,6 +39,7 @@ class Story(models.Model):
     sb_thing = models.CharField(max_length=30,null=True)
     sb_story = models.CharField(max_length=30,null=True)
     sb_name = models.CharField(max_length=30,null=True)
+
     #create_at = models.DateTimeField(auto_now_add=True,null=True)
 #    tags = models.ManyToManyField(Tag, blank=True, related_name='tags_story')
     #tags = models.CharField('Tag', blank=True)

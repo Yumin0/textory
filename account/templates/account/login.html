@@ -1,14 +1,58 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% block head %}
+<style>
+body {
+  background: #F9F9F9;
+}
+.container {
+  width: 1280px;
+  margin-top:0px;
+  height: 500px;
+}
+.box {
+  margin: 0 auto;
+  padding-left: 450px;
+}
+h1 {
+  color: #878d99;
+}
+input {
+  background: #f1f1f1;
+  font-size: 20px;
+  height: 50px;
+  border: 1px solid #f1f1f1;
+  color: #878d99;
+  outline: none;
+  padding-left: 20px;
+}
+.login-btn{
+  color: #878d99;
+  background-color: #f8f8f8;
+  height: 50px;
+  font-size: 20px;
+  border: 1px solid #f8f8f8;
+  width: 280px;
+}
+.login-btn:hover {
+  background-color: #fff;
+}
+
+</style>
+{% endblock %}
 {% block body %}
-<div class="container" style="text-align:center;">
+<div class="container">
+  <div class="box">
     <h1>登入</h1>
+        <br><br>
         <form method="post">
         {% csrf_token %}
         姓名：{{ form.username }}
         <br><br>
-        密碼:{{ form.password }}
-        <button type="submit">Login</button>
-    </form>
+        密碼：{{ form.password }}
+        <br><br>
+        <button type="submit" class="login-btn">Login</button>
+        </form>
+  </div>
 </div>
 {% endblock %}

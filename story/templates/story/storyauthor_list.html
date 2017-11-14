@@ -21,6 +21,11 @@
 
 {% block body %}
   <div class="container">
+    <div class="box">
+      <a class="button_blank button" href="{% url 'story_list' %}">故事</a>
+      <a class="button_blank button" href="{% url 'storyauthors' %}">作者</a>
+      <a class="button" href="{% url 'story_new' %}">新增故事</a>
+    </div>
     <h1>All storyauthors</h1>
 
     {% if storyauthor_list %}

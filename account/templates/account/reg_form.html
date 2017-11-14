@@ -1,12 +1,61 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% block head %}
+<style>
+body {
+  background: #F9F9F9;
+}
+.container {
+  width: 1280px;
+  margin-top:0px;
+  height: 500px;
+}
+.box {
+  margin: 0 auto;
+  padding-left: 450px;
+}
+h1 {
+  color: #878d99;
+}
+input {
+  background: #f1f1f1;
+  font-size: 20px;
+  height: 50px;
+  border: 1px solid #f1f1f1;
+  color: #878d99;
+  outline: none;
+  padding-left: 20px;
+}
+.reg-btn{
+  color: #878d99;
+  background-color: #f8f8f8;
+  height: 50px;
+  font-size: 20px;
+  border: 1px solid #f8f8f8;
+  width: 280px;
+}
+.reg-btn:hover {
+  background-color: #fff;
+}
+</style>
+{% endblock %}
 {% block body %}
-<div class="container" style="text-align:center;">
+<div class="container">
+    <div class="box">
     <h1>註冊</h1>
+    <br><br>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
+        姓名：{{ form.username }}
+        <br><br>
+        信箱：{{ form.email }}
+        <br><br>
+        密碼：{{ form.password1 }}
+        <br><br>
+        確認：{{ form.password2 }}
+        <br><br>
+        <button type="submit" class="reg-btn">註冊</button>
     </form>
+    </div>
 </div>
 {% endblock %}
