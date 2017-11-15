@@ -168,14 +168,16 @@
       }
 
       .widget {
-        margin-bottom: 100px;
+        margin-bottom: 70px;
         padding: 40px 100px 80px;
         border-radius: 12px;
         background-color: #fff;
         box-shadow: 0 6px 40px 0 rgba(43,43,69,.06), 0 12px 94.08px 1.92px rgba(43,43,69,.08);
       }
 
+
       .start-btn {
+        margin-bottom: 50px;
         font-size: 20px;
         border:1px solid #f3f3f4;
         padding:20px 20px;
@@ -251,7 +253,11 @@
   <section>
     <div class="use_cases">
       <div class="container">
-        <h2 class="section-title">流程說明</h2>
+        <h2 class="section-title">創作理念</h2>
+        <h5 class="case__descr" style="text-align:center;">
+          在現今的社會，我們常常夠過社會給予的標籤來迅速瞭解一個人，或許家庭背景、學校科系、職位頭銜等等可以代表著一部分的你，但你是一個怎麼樣的人、你的人格特質、發生在你身旁周遭的人事物等等才能真正夠塑造每一個人的獨特性，
+          Textory希望能夠透過第三人稱的角度：你的故事，讓朋友來說 ; 朋友的故事，讓你來說。
+        </h5>
         <div class="cases">
           <div class="row case case--blogger">
             <div class="col-xs-8 col-sm-6 col-md-5 col-xs-offset-2 col-sm-offset-0 col-md-offset-1">
@@ -260,7 +266,7 @@
             <div class="col-xs-12 col-sm-6 col-md-5">
               <h3 class="case__title">步驟一：介紹你的朋友</h3>
               <h5 class="case__descr">
-                使用者只要透過幾個選項的引導，就可以讓你用詼諧的方式來描述你的朋友是怎麼樣的人，立即創造一段專屬於你朋友的個人簡述
+                很多時候，越是親近的友人，有一些話我們越是不好意思直接表達，Textory讓使用者只要透過幾個文字選項的引導，第一句直接描述“他/她”是一個怎樣的人，第二句描述“他/她”或是你們之間發生過的一件事，簡短的兩句話，就可以帶出更長的故事、更多的想像空間
               </h5>
             </div>
           </div>
@@ -273,8 +279,7 @@
             <div class="col-xs-12 col-sm-6 col-md-5 col-md-offset-1">
               <h3 class="case__title">步驟二：分享給更多人看</h3>
               <h5 class="case__descr">
-                張貼到朋友臉書的動態牆，讓更多人了解你他/她的獨特性
-                邀請你的身邊友人用文字的方式，敘述在對方心中的你又是個什麼樣的人
+                當你創造了一段專屬於你對某位朋友的短描述，當然會希望你的朋友可以看到這則訊息，甚至爆料這些有趣的事給朋友的朋友知道，使用者可以直接將此段描述轉貼到朋友臉書的動態牆，當朋友點開看完之後才會發現，原來文中描述的“我有一位朋友”，就是指他/她本人，同時Textory也希望透過分享擴散出去的方式，吸引更多人一起來創造一則則獨一無二的故事
               </h5>
             </div>
           </div>
@@ -287,25 +292,47 @@
       <div class="container" style="margin-right: auto; margin-left: auto;">
         <h2 class="section-title">範例</h2>
         <div class="widgets row">
-          <div class="col-md-12 col-lg-12">
+          <div class="exam-box col-md-4 col-lg-4">
             <div class="widget widget--users-talk">
-              <div class="widget__body">
-                <h4 style="font-weight:900;">標題: 我有一個朋友</h4>
-                <br>
-                <h4 style="line-height: 3; font-family: Noto Sans TC; font-weight:300;">內文: 她是一個
-                  <span id="app2"><el-input  class="exam-input1" v-model="input" placeholder="非常奇怪"></el-input></span>
-                  &nbsp; &nbsp; 的人，因為她很喜歡
-                  <span id="app3"><el-input  class="exam-input3" v-model="input" placeholder="一個人默默地去公園吃榴蓮"></el-input></span>&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp; ，
-                  <br>
-                  哈哈我在說那個人就是你，
-                  <span id="app4"><el-input  class="exam-input1" v-model="input" placeholder="XXX" ></el-input></span> &nbsp; &nbsp;&nbsp; &nbsp;XD</h4>
-                  <br>
-                  <a href="{% url 'story_list' %}" class="col-md-12 col-lg-12 start-btn">進入</a>
-                  <br>
-                  <br>
+              <div class="widget__body" style="text-align:center;">
+                <h4>我有一個朋友</h4>
+                <p style="font-size:14px; font-family: Noto Sans TC; font-weight: 300; color:#878d99;">她 是一個 有點 無趣 的人，
+                   因為她 很喜歡 做有益身心的事
+                   她 曾經做過一件很好笑的事，
+                   就是 當上社區鄉里設計長，親自為2017中秋節海報操刀
+                </p>
               </div>
             </div>
           </div>
+          <div class="exam-box col-md-4 col-lg-4">
+            <div class="widget widget--users-talk">
+              <div class="widget__body" style="text-align:center;">
+                <h4>我有一個朋友</h4>
+                <p style="font-size:14px; font-family: Noto Sans TC; font-weight: 300; color:#878d99;">
+                他 是一個 非常 有病 的人，
+                因為他 常常 喝酒喝到很ㄎㄧㄤ
+                他 曾經做過一件很丟臉的事，
+                就是 在酒吧喝醉後隨便跟陌生女子講話後立馬跑走
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="exam-box col-md-4 col-lg-4">
+            <div class="widget widget--users-talk">
+              <div class="widget__body" style="text-align:center;">
+                <h4>我有一個朋友</h4>
+                <p style="font-size:14px; font-family: Noto Sans TC; font-weight: 300; color:#878d99;">
+                  我有一個朋友 她 是一個 非常 奇怪 的人，
+                  因為她 很喜歡 一個人默默地去公園吃榴蓮
+                  她 曾經做過一件很丟臉的事，
+                  就是 在路上騎著空氣腳踏車
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <a href="{% url 'story_list' %}" class="col-md-12 col-lg-12 start-btn">進入</a>
         </div>
       </div>
     </div>
