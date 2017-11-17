@@ -138,8 +138,13 @@ select {
   width: 30%;
 }
 
+.story_content {
+  width: 800px;
+  margin: 0 auto;  
+}
+
 .story_content p{
-  text-align: center;
+  text-align: left;
   font-size: 35px;
   margin-top: 200px;
   color: #fff;

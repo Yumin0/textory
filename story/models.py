@@ -37,7 +37,7 @@ class Story(models.Model):
     author = models.ForeignKey(StoryAuthor, related_name='storys',null=True)
     #author = models.ForeignKey(User, related_name='storys',null=True)
     sb_thing = models.CharField(max_length=30,null=True)
-    sb_story = models.CharField(max_length=30,null=True)
+    sb_story = models.CharField(max_length=100,null=True)
     sb_name = models.CharField(max_length=30,null=True)
 
     #create_at = models.DateTimeField(auto_now_add=True,null=True)
