@@ -3,7 +3,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
 class RegistrationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+    username = forms.CharField(label='姓名', required=True)
+    email = forms.EmailField(label='信箱',required=True)
+    password1 = forms.CharField(label='密碼',required=True, widget=forms.PasswordInput())
+    password2 = forms.CharField(label='確認密碼',required=True, widget=forms.PasswordInput())
+
 
     class Meta:
         model = User

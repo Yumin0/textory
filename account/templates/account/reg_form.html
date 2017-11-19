@@ -46,13 +46,8 @@ input {
     <br><br>
     <form method="post">
         {% csrf_token %}
-        姓名：{{ form.username }}
-        <br><br>
-        信箱：{{ form.email }}
-        <br><br>
-        密碼：{{ form.password1 }}
-        <br><br>
-        確認：{{ form.password2 }}
+         {{ form.as_p }}
+
         <br><br>
         <button type="submit" class="reg-btn">註冊</button>
     </form>
