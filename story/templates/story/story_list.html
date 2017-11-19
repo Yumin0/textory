@@ -1,7 +1,9 @@
 {% extends 'story/base.html' %}
 {% load staticfiles %}
 {% block head %}
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
 body {
@@ -64,12 +66,13 @@ a {
 
       {{ story.who }} 曾經做過一件很{{ story.sth_adj }}的事，
 
-      就是 {{ story.sb_story }}
+      就是 {{ story.sb_story|truncatechars:20 }}
       <br>
       </p>
     </div>
   </a>
   {% endfor %}
+
 </div>
 <script src="//unpkg.com/vue/dist/vue.js"></script>
 <script src="//unpkg.com/element-ui@2.0.4/lib/index.js"></script>
