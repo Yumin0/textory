@@ -10,6 +10,8 @@ from django.contrib.auth.decorators import login_required
 
 #def home(request):
     #return render(request, 'account/home.html', args)
+def login_redirect(request):
+    return redirect('/stories')
 
 def register(request):
     if request.method =='POST':
