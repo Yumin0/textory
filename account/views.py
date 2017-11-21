@@ -6,8 +6,9 @@ from account.forms import (
 from django.contrib.auth.models import User
 #from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
 #def home(request):
     #return render(request, 'account/home.html', args)
 def login_redirect(request):
@@ -17,8 +18,13 @@ def register(request):
     if request.method =='POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-                form.save()
-                return redirect('/stories')
+            new_user = form.save()
+            
+            new_user = authenticate(username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password1'],
+                                    )
+            login(request, new_user)
+            return redirect('/stories')
     else:
         form = RegistrationForm()
 
