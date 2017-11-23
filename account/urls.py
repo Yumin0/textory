@@ -2,6 +2,9 @@ from django.conf.urls import url
 from account import views
 from django.contrib.auth.views import login, logout
 
+from .views import (
+    UserDetailView
+)
 app_name = 'account'
 urlpatterns=[
     #url(r'^$',views.home),
@@ -10,5 +13,7 @@ urlpatterns=[
     url(r'^register/$', views.register, name='register'),
     url(r'^profile/$', views.view_profile, name='view_profile'),
     url(r'^profile/edit/$', views.edit_profile, name='edit_profile'),
+    url(r'^(?P<pk>\d+)/$', UserDetailView.as_view(), name='detail'),
+    #url(r'^(?P<username>[\w.@+-]+)/$', UserDetailView.as_view(), name='detail'),
     #url(r'^change-password/$', views.change_password, name='change_password'),
 ]

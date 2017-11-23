@@ -1,3 +1,7 @@
+a {
+  text-decoration:none
+}
+
 #id_wrapper {
   min-height: 100%;
   position: relative;
@@ -54,11 +58,13 @@
   transition: background-color .25s ease-out, box-shadow .25s ease;
 }
 
+
 .button_blank {
   background-color: transparent;
   box-shadow: none;
   color: #333435;
 }
+
 
 .index_page_info_section {
     position: fixed;
@@ -140,7 +146,7 @@ select {
 
 .story_content {
   width: 800px;
-  margin: 0 auto;  
+  margin: 0 auto;
 }
 
 .story_content p{

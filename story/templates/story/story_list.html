@@ -48,14 +48,13 @@ a {
 
 <div class="container">
   <div class="box">
-    <a class="button_blank button" href="{% url 'story_list' %}">故事</a>
-    <a class="button_blank button" href="{% url 'storyauthors' %}">作者</a>
-    <a class="button" href="{% url 'story_new' %}">新增故事</a>
+    <a class="button_blank button" href="{% url 'story_list' %}" style="text-decoration:none;">故事</a>
+    <a class="button_blank button" href="{% url 'storyauthors' %}" style="text-decoration:none;">作者</a>
+    <a class="button" href="{% url 'story_new' %}" style="text-decoration:none;">新增故事</a>
   </div>
   {% for story in storys %}
   <a href="{% url 'story_detail' pk=story.pk %}">
     <div class="about_page__tweet">
-      <span>{{ story.created_at|date:"Y / m / d" }}</span>
       <br>
       {{ story.sb_adj }} 的人
       <br><br>

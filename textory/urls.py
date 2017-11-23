@@ -21,10 +21,12 @@ from story import views
 from django.contrib.auth.views import login, logout
 from textory import views
 from story.views import hello_world
-
+from account.views import UserDetailView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^account/', include('account.urls')),
+    url(r'^profiles/', include('account.urls', namespace='profiles')),
     url(r'', include('story.urls')),
     url(r'^$', hello_world),
+    #url(r'^(?P<username>[\w.@+-]+)/$', UserDetailView.as_view(), name='detail'),
 ]
