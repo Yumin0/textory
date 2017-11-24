@@ -18,14 +18,6 @@ body {
     <h1>Profile</h1>
     <p>Username: {{ user }}</p>
     <p>User email :{{ user.email }}</p>
-    {% if storys %}
-      {% for user in storys %}
-        {{ user.story_sb_name }}
-      {% endfor %}
-    {% else %}
-      NOOOO
-    {% endif %}
-
 </div>
 
 {% endblock %}
