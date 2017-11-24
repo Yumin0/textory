@@ -55,7 +55,7 @@
             </a>
 
             <br><br><br>
-            <span>Storyteller: {{ story.author.id }}</span>
+            <span><a href="{% url 'storys_by_author' story.author.pk %}" style="color:#fff;">Storyteller #{{ story.author.id }}</a></span>
           </div>
         </div>
 	  </body>
