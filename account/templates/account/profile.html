@@ -26,21 +26,6 @@ body {
       NOOOO
     {% endif %}
 
-
-    <h1>Following</h1>
-    {% for user in user.profile.following.all %}
-    <a href='/profiles/{{ user.id }}'>{{ user.username }}</a><br>
-    {% empty %}
-    <h4>尚未追蹤任何人</h4>
-    {% endfor %}
-
-    <h1>Followed By</h1>
-    {% for profile in user.followed_by.all %}
-    <a href='/profiles/{{ user.id }}'>{{ user.username }}</a><br>
-    {% empty %}
-    <h4>尚未被任何人追蹤</h4>
-    {% endfor %}
-
 </div>
 
 {% endblock %}
