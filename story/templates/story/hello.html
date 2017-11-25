@@ -199,6 +199,7 @@
         background: #414167;
         background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
         text-align: center;
+        height: 300px;
       }
 
       .copyrights {
@@ -219,6 +220,21 @@
         align-self: center;
         min-width: 80px;
         max-width: 500px;
+      }
+      @media screen and (max-width: 400px){
+        .index__intro_logo_box {
+            margin-bottom: 70px;
+        }
+        
+        .col-xs-8{
+            margin-left: 15px;
+        }
+        .exp-pic2{
+            margin-right: 120px;
+        }
+        .container {
+          margin-top: 50px;
+        }
       }
       </style>
     </head>
@@ -274,7 +290,7 @@
         </div>
         <div class="cases">
           <div class="row case case--blogger">
-            <div class="col-xs-8 col-sm-6 col-md-5 col-xs-offset-2 col-sm-offset-0" style="float: right!important;">
+            <div class="exp-pic2 col-xs-8 col-sm-6 col-md-5 col-xs-offset-2 col-sm-offset-0" style="float: right!important;">
               <img src="{% static 'img/follower.png' %}">
             </div>
             <div class="col-xs-12 col-sm-6 col-md-5 col-md-offset-1">
@@ -333,7 +349,7 @@
           </div>
         </div>
 
-          <a href="{% url 'story_list' %}" class="col-md-12 col-lg-12 start-btn">進入</a>
+          <a href="{% url 'story_list' %}" class="col-md-12 col-lg-12 col-xs-12 start-btn">進入</a>
         </div>
       </div>
     </div>
