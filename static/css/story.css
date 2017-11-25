@@ -37,9 +37,10 @@ a {
 .navbar-brand {
   margin-top: -10px;
 }
+
 .button {
   display: inline-block;
-  min-width: 130px;
+  min-width: 120px;
   padding: 0 33px;
   height: 42px;
   line-height: 36px;
@@ -141,7 +142,7 @@ select {
 }
 
 .el-input__inner_s {
-  width: 30%;
+  width: 40%;
 }
 
 .story_content {

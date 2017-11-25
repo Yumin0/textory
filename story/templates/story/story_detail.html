@@ -27,6 +27,12 @@
         font-size: 50px;
         color: #fff;
       }
+      @media screen and (max-width: 1280px){
+        .story_content{
+          width: 100%;
+          padding: 0 20px;
+        }
+      }
     </style>
 
     </head>
@@ -34,17 +40,22 @@
         <a href="{% url 'story_list' %}" class="close fa fa-times-circle fa-6"></a>
         <div class="story_content">
           <p>
+          <span>
           我有一個朋友
           {{ story.sb_gender }} 是一個 {{ story.sb_adv }} {{ story.sb_adj }} 的人，
-          <br>
+          </span>
+          <span>
           因為{{ story.sb_gender }} {{ story.sb_about }} {{ story.sb_thing }}
-          <br>
+          </span>
+          <span>
           {{ story.who }} 曾經做過一件很{{ story.sth_adj }}的事，
-          <br>
+          </span>
+          <span>
           就是 {{ story.sb_story }}...
-          <br>
+          </span>
+          <span>
           {{ story.itjcts }} 我在說那個人就是你，{{ story.sb_name }} {{ story.mark }}
-
+          </span>
           </p>
 
 

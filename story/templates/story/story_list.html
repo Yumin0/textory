@@ -41,6 +41,26 @@ body {
 a {
   color: inherit;
 }
+
+@media screen and (max-width: 128 0px){
+  .container {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 400px){
+  .container {
+    width: 100%;
+  }
+  .story_list_items{
+    padding: 0 80px;
+  }
+  .nav-btn{
+    min-width: 50px;
+    padding: 0;
+    margin-top: 20px;
+  }
+
+}
 </style>
 {% endblock %}
 
@@ -52,6 +72,8 @@ a {
     <a class="button_blank button" href="{% url 'storyauthors' %}" style="text-decoration:none;">作者</a>
     <a class="button" href="{% url 'story_new' %}" style="text-decoration:none;">新增故事</a>
   </div>
+
+  <div class="story_list_items">
   {% for story in storys %}
   <a href="{% url 'story_detail' pk=story.pk %}">
     <div class="about_page__tweet">
@@ -71,6 +93,7 @@ a {
     </div>
   </a>
   {% endfor %}
+  </div>
 
 </div>
 <script src="//unpkg.com/vue/dist/vue.js"></script>
