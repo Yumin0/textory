@@ -18,6 +18,24 @@ body {
 h1 {
   color: #878d99;
 }
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border:none !important;
+  -webkit-text-fill-color: inherit !important;
+  -webkit-box-shadow: 0 0 0px 1000px #FFFFFF inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 input {
   background: #f1f1f1;
   font-size: 20px;
@@ -59,6 +77,14 @@ input {
         <br><br>
         <button type="submit" class="login-btn">登入</button>
         </form>
+        <div class="col-xs-2 col-sm-2">
+                <a href="{% url "social:begin" "google-oauth2" %}" class="btn btn-lg btn-block kpx_btn-google-plus"
+                   data-toggle="tooltip" data-placement="top"
+                   title="Google Plus">
+                    GOOGLE LOGIN
+                    <span class="hidden-xs"></span>
+                </a>
+        </div>
   </div>
 </div>
 {% endblock %}
