@@ -28,6 +28,5 @@ urlpatterns = [
     url(r'^profiles/', include('account.urls', namespace='profiles')),
     url(r'', include('story.urls')),
     url(r'^$', hello_world),
-    url(r'social-auth/', include('social_django.urls', namespace='social'))
     #url(r'^(?P<username>[\w.@+-]+)/$', UserDetailView.as_view(), name='detail'),
 ]
