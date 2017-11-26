@@ -67,7 +67,7 @@ input {
 {% block body %}
 <div class="container">
   <div class="box">
-    <h1>登入</h1>
+    <h1 style="text-align:center;">登入</h1>
         <br><br>
         <form method="post">
         {% csrf_token %}
@@ -77,14 +77,6 @@ input {
         <br><br>
         <button type="submit" class="login-btn">登入</button>
         </form>
-        <div class="col-xs-2 col-sm-2">
-                <a href="{% url "social:begin" "google-oauth2" %}" class="btn btn-lg btn-block kpx_btn-google-plus"
-                   data-toggle="tooltip" data-placement="top"
-                   title="Google Plus">
-                    GOOGLE LOGIN
-                    <span class="hidden-xs"></span>
-                </a>
-        </div>
   </div>
 </div>
 {% endblock %}
