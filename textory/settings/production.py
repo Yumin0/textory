@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = os.environ.get('SECRET_KEY','s^x1=muagzvdpc57ta6*pk$dc_#wvq$7jwg00c6uq-3dtc&lr-')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['textory.herokuapp.com','.textory.tw']
 
