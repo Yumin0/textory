@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'account',
     'story',
     'storages',
-    'social_django',
     'django.contrib.admin',
 ]
 
@@ -137,13 +136,3 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_REDIRECT_URL = '/stories'
-
-
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.google.GoogleOAuth2',
-)
-
-SOCIAL_AUTH_URL_NAMESPACE = 'social'
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '300481992168-gp9iamr3q6vkll00elqqu1om4p9ej8uq.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'vqaN6ASClJtN_96am1yaDpRE'

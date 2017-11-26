@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = os.environ.get('SECRET_KEY','s^x1=muagzvdpc57ta6*pk$dc_#wvq$7jwg00c6uq-3dtc&lr-')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['textory.herokuapp.com','.textory.tw']
 
@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
-    'social_django',
     'story',
 ]
 
@@ -60,6 +59,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'social.apps.django_app.middleware.SocialAuthExceptionMiddleware',
 
 ]
 
@@ -159,14 +159,3 @@ CSRF_COOKIE_SECURE              = True
 SECURE_HSTS_INCLUDE_SUBDOMAINS  = True
 SECURE_HSTS_SECONDS             = 1000000
 SECURE_FRAME_DENY               = True
-
-
-
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.google.GoogleOAuth2',
-)
-
-SOCIAL_AUTH_URL_NAMESPACE = 'social'
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '300481992168-gp9iamr3q6vkll00elqqu1om4p9ej8uq.apps.googleusercontent.com' 
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'vqaN6ASClJtN_96am1yaDpRE'
