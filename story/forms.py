@@ -2,8 +2,8 @@ from django import forms
 from .models import Story
 
 class StoryForm(forms.ModelForm):
-    sb_thing = forms.CharField(widget=forms.TextInput(attrs={'class':'abc1 el-input__inner el-input__inner_m'}))
-    sb_story = forms.CharField(widget=forms.TextInput(attrs={'class':'abc2 el-input__inner el-input__inner_m'}))
+    sb_thing = forms.CharField(widget=forms.TextInput(attrs={'class':'abc1 el-input__inner el-input__inner_m', 'placeholder': '字數上限30字'}))
+    sb_story = forms.CharField(widget=forms.TextInput(attrs={'class':'abc2 el-input__inner el-input__inner_m', 'placeholder': '字數上限30字'}))
     sb_name = forms.CharField(widget=forms.TextInput(attrs={'class':'abc3 el-input__inner el-input__inner_s'}))
     #tags = forms.ModelMultipleChoiceField(
     #    to_field_name='slug',
@@ -26,7 +26,7 @@ class StoryForm(forms.ModelForm):
          #remove labels for fields
          for field_name in self.fields:
             field = self.fields.get(field_name)
-            field.widget.attrs['placeholder'] = field.label
+            #field.widget.attrs['placeholder'] = field.label
             field.label =''
 
     class Meta:
