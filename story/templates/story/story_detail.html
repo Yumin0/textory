@@ -22,7 +22,7 @@
     <style>
       #full_gradient {
         width: 100vw !important;
-        height: 100vh !important;
+        height: 900px;
         background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
       }
       .close{
@@ -42,6 +42,9 @@
         }
         .story_content p {
           font-size: 30px;
+        }
+        .buttom {
+          margin: 25px auto;
         }
       }
     </style>
@@ -71,7 +74,7 @@
           </p>
 
 
-          <div class="buttom">
+          <div class="buttom  col-xs-12">
             <br>
             <a href="{{ request.build_absolute_url }}" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'facebook-share-dialog','width=626,height=436');return false;" class="write_button">
               <i class="fa fa-facebook" aria-hidden="true"> 分享到朋友動態牆</i>
