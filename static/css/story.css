@@ -153,12 +153,12 @@ select {
 .story_content {
   width: 800px;
   margin: 0 auto;
+  padding-top: 200px;
 }
 
 .story_content p{
   text-align: left;
   font-size: 35px;
-  margin-top: 200px;
   color: #fff;
   letter-spacing: 2px;
 }
