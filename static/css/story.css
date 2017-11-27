@@ -186,3 +186,14 @@ select {
   background: #fff;
   color: #b99bd8;
 }
+
+
+@media screen and (min-width: 320px) and (max-width: 450px) {
+  .story_content{
+    width: 100%;
+    padding: 100px 30px 0 30px;
+  }
+  .story_content p {
+    font-size: 60px;
+  }
+}
