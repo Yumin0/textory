@@ -63,6 +63,7 @@ class Story(models.Model):
     sb_adv = models.CharField(max_length = 100,null=True,choices = SB_ADV)
 
     SB_ADJ = (
+        ('humor','humor'),
         ('奇怪','奇怪'),
         ('白目','白目'),
         ('有病','有病'),
@@ -89,6 +90,7 @@ class Story(models.Model):
         ('怕','怕'),
         ('常常','常常'),
         ('很會','很會'),
+        ('曾經','曾經'),
     )
     sb_about = models.CharField(max_length = 100,null=True,choices = SB_ABOUT)
 
@@ -103,6 +105,8 @@ class Story(models.Model):
         ('扯','扯'),
         ('蠢','蠢'),
         ('煩','煩'),
+        ('北七','北七'),
+        ('北爛','北爛'),
         ('誇張','誇張'),
         ('有趣','有趣'),
         ('好笑','好笑'),
@@ -121,6 +125,7 @@ class Story(models.Model):
         ('哈哈','哈哈'),
         ('呵呵','呵呵'),
         ('顆顆','顆顆'),
+        ('嘿丟','嘿丟'),
     )
     itjcts = models.CharField(max_length = 100,null=True,choices = ITJCTS)
 
