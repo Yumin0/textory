@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'story',
     'storages',
     'django.contrib.admin',
-    'taggit',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -136,5 +135,4 @@ STATICFILES_DIRS = (
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-LOGIN_URL = '/account/login'
 LOGIN_REDIRECT_URL = '/stories'
