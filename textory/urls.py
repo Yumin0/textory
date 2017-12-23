@@ -28,5 +28,6 @@ urlpatterns = [
     url(r'^profiles/', include('account.urls', namespace='profiles')),
     url(r'', include('story.urls')),
     url(r'^$', hello_world),
+    #url(r'^tags_input/', include('tags_input.urls', namespace='tags_input')),
     #url(r'^(?P<username>[\w.@+-]+)/$', UserDetailView.as_view(), name='detail'),
 ]

@@ -8,11 +8,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.views.generic import DetailView
 from story.models import Story, StoryAuthor
-#from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
-from django.contrib.auth import update_session_auth_hash
 
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 #def home(request):
     #return render(request, 'account/home.html', args)
 

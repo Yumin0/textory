@@ -1,10 +1,11 @@
 from django import forms
-from .models import Story
+from .models import Story, Category
 
 class StoryForm(forms.ModelForm):
     sb_thing = forms.CharField(widget=forms.TextInput(attrs={'class':'abc1 el-input__inner el-input__inner_m', 'placeholder': '字數上限30字'}))
     sb_story = forms.CharField(widget=forms.TextInput(attrs={'class':'abc2 el-input__inner el-input__inner_m', 'placeholder': '字數上限30字'}))
     sb_name = forms.CharField(widget=forms.TextInput(attrs={'class':'abc3 el-input__inner el-input__inner_s'}))
+
     #tags = forms.ModelMultipleChoiceField(
     #    to_field_name='slug',
     #    required=False,
@@ -42,7 +43,9 @@ class StoryForm(forms.ModelForm):
             'sb_story',
             'itjcts',
             'sb_name',
-            'mark'
+            'mark',
+            'category',
+            'adjective_t'
         )
     #def clean(self):
         # this condition only if the POST data is cleaned, right?

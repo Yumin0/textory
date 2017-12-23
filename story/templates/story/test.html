@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="box">
+    <a class="button_blank button" href="{% url 'story_list' %}" style="text-decoration:none;">故事</a>
+    <a class="button_blank button" href="{% url 'storyauthors' %}" style="text-decoration:none;">作者</a>
+    <a class="button" href="{% url 'story_new' %}" style="text-decoration:none;">新增故事</a>
+  </div>
+
+  {% if error_msg %}
+    <p>{{ error_msg }}</p>
+  {% endif %}
+
+  <form method='GET' action=''>
+  <input type='text' name='q' placeholder='Search posts' value='{{ request.GET.q }}'/>
+  <input type='submit' value='Search' />
+  </form>
+
+  <div id="search-form" class="search-form">
+    <form role="search" method="get" id="searchform" action="#">
+    <input type="search" placeholder="搜索" required>
+    <button type="submit"><span class="ion-ios-search-strong"></span></button>
+    </form>
+  </div>
+
+    {% for category in category_list %}
+    <span class="post-category"><a href="{% url 'category' category.pk %}">{{ category.name }}({{ category.num_storys }})</a></span>
+    {% empty %}
+      暫無分類！
+    {% endfor %}
+
+  <div class="grid-list-tiles">
+  {% for story in storys %}
+  <li class="grid-list-tile col-md-4 col-lg-4" style="list-style-type:none;">
+  <a href="{% url 'story_detail' pk=story.pk %}">
+    <div class="about_page__tweet">
+      <h1 class="fonts-module-title">{{ story.sb_adj }} 的人</h1>
+      <h2 class="fonts-module-subtitle">{{ story.author }}</h2>
+      <div class="font-preview-controls-container"></div>
+      <p class="font-preview-text">
+      {{ story.sb_gender }} 是一個 {{ story.sb_adv }} {{ story.sb_adj }} 的人，
+
+      因為{{ story.sb_gender }} {{ story.sb_about }} {{ story.sb_thing }}
+
+      {{ story.who }} 曾經做過一件很{{ story.sth_adj }}的事，
+
+      就是 {{ story.sb_story|truncatechars:15 }}
+      <br>
+      {% with total_likes=story.users_like.count users_like=story.users_like.all %}
+      <span class="count">
+                  <span class="total">{{ total_likes }}</span>
+                  like{{ total_likes|pluralize }}
+      </span>
+      {% endwith %}
+      <div class="like_count_story" id="heart-counter"><i class="heart-shaped fa fa-heart"></i> 哈哈哈 {{ story.likes }} </div>
+
+      </p>
+    </div>
+  </a>
+  </li>
+  {% endfor %}
+  </div>
+</div>
+
+<script src="//unpkg.com/vue/dist/vue.js"></script>
+<script src="//unpkg.com/element-ui@2.0.4/lib/index.js"></script>
+<script type="text/javascript">
+  $(document.body).on("click", ".story-like", function(e){
+      e.preventDefault()
+      var this_ = $(this)
+      // var storyId = this_.attr("data-id")
+      // var likedUrl = '/api/story/' + storyId + "/like/"
+      this_.text("Liked")
+
+  })
+  $(".sidebar-dropdown > a").click(function(){
+    $(".sidebar-submenu").slideUp(250);
+    if ($(this).parent().hasClass("active")){
+       $(".sidebar-dropdown").removeClass("active");
+       $(this).parent().removeClass("active");
+    }else{
+      $(".sidebar-dropdown").removeClass("active");
+      $(this).next(".sidebar-submenu").slideDown(250);
+      $(this).parent().addClass("active");
+    }
+
+  });
+
+   $("#toggle-sidebar").click(function(){
+     $(".page-wrapper").toggleClass("toggled");
+   });
+
+     if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+             $(".sidebar-content").mCustomScrollbar({
+                      axis:"y",
+                      autoHideScrollbar: true,
+                      scrollInertia: 300
+              });
+              $(".sidebar-content").addClass("desktop");
+
+      }
+</script>

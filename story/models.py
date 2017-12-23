@@ -1,13 +1,15 @@
 from django.db import models
+from django.conf import settings
 from django.utils import timezone
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 class StoryAuthor(models.Model):
     """
     Model representing a author.
     """
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-
+    #user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     #bio = models.TextField(max_length=400, help_text="Enter your bio details here.")
 
     def get_absolute_url(self):
@@ -33,9 +35,34 @@ class StoryAuthor(models.Model):
 #    def get_absolute_url(self):
 #        return reverse('story:tag_detail', kwargs={'tag_name': self.slug})
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
+class ThingAdjective(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
 class Story(models.Model):
     author = models.ForeignKey(StoryAuthor, related_name='storys',null=True)
+    #author = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='storys',null=True)
     #author = models.ForeignKey(User, related_name='storys',null=True)
+
+    category = models.ForeignKey(Category,null=True)
+
+    adjective_t = models.ForeignKey(ThingAdjective,null=True)
+    likes = models.PositiveIntegerField(default=0)
+
+    @property
+    def total_likes(self):
+        return self.likes.count()
+
+    users_like = models.ManyToManyField(settings.AUTH_USER_MODEL,
+                                        related_name='story_liked',
+                                        blank=True)
+
     sb_thing = models.CharField(max_length=50,null=True)
     sb_story = models.CharField(max_length=150,null=True)
     sb_name = models.CharField(max_length=30,null=True)
@@ -146,9 +173,16 @@ class Story(models.Model):
     published_date = models.DateTimeField(
             blank=True, null=True)
 
+
     def publish(self):
         self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
         return self.sb_name
+
+    def get_like_url(self):
+        return reverse("storys:like-toggle", kwargs={"slug": self.slug})
+
+    def get_api_like_url(self):
+        return reverse("posts:like-api-toggle", kwargs={"slug": self.slug})

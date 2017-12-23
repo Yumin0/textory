@@ -3,17 +3,56 @@
 {% block head %}
 <style>
 body {
-  background: #F9F9F9;
+  background: #fff;
+}
+#header {
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    z-index:9000;
+    overflow: auto;
+    background: #fff;
+    transition: all 0.5s linear;
+    padding: 0;
+}
+#header.active {
+     box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.header-nav-logo {
+  position: relative;
+  top: 2px;
+  left: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 35px;
+  background:-webkit-linear-gradient(#a18cd1, #fbc2eb);
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+}
+.header-nav{
+  position: relative;
+  top: -34px;
+  text-align: right;
+}
+
+.header-nav-list{
+  display: inline-flex;
+  margin-right: 70px;
+  list-style-type: none;
+}
+.header-nav-list li {
+  margin-left: 32px;
 }
 .container {
   width: 100%;
   max-width: 1280px;
   margin-top:0px;
-  height: 500px;
 }
 .box {
-  margin-left: 450px;
-  display: inline-block;
+  display: block;
+  margin: 0 auto;
+  width: 256px;
+  margin-top: 70px;
 }
 h1 {
   color: #878d99;
@@ -36,25 +75,35 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
+.input-text {
+    text-align: left;
+    margin-top: 16px;
+    line-height: 24px;
+    font-size: 16px;
+}
+
 input {
-  background: #f1f1f1;
-  font-size: 20px;
-  height: 50px;
-  border: 1px solid #f1f1f1;
-  color: #878d99;
-  outline: none;
-  padding-left: 20px;
+  margin: 4px 0 0 0;
+  line-height: 24px;
+  color: #374049;
+  width: 256px !important;
+  height: 40px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+  padding-left: 10px;
 }
 .login-btn{
-  color: #878d99;
-  background-color: #f8f8f8;
-  height: 50px;
-  font-size: 20px;
+  color: #fff;
+  background-image: linear-gradient(to left, #a18cd1 0%, #fbc2eb 100%);
+  height: 40px;
+  font-size: 18px;
   border: 1px solid #f8f8f8;
-  width: 280px;
+  width: 256px;
+  margin: 24px 0px 16px;
+  border-radius: 3px;
 }
 .login-btn:hover {
-  background-color: #fff;
+  background-image: linear-gradient(to left, #c5b0f5 0%, #ffdaf5 100%);
 }
 
 @media screen and (max-width: 400px){
@@ -64,6 +113,7 @@ input {
 }
 </style>
 {% endblock %}
+
 {% block body %}
 <div class="container">
   <div class="box">
@@ -71,10 +121,10 @@ input {
         <br><br>
         <form method="post">
         {% csrf_token %}
-        姓名：{{ form.username }}
-        <br><br>
-        密碼：{{ form.password }}
-        <br><br>
+        <div class="input-text">姓名</div>
+        <div class="input-wrapper">{{ form.username }}</div>
+        <div class="input-text">密碼</div>
+        <div class="input-wrapper">{{ form.password }}</div>
         <button type="submit" class="login-btn">登入</button>
         </form>
   </div>

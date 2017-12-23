@@ -40,12 +40,13 @@
   text-transform: uppercase;
   font-weight: 700;
   font-family: Montserrat, Helvetica, sans-serif;
-  background-color: #f6f6f6;
-  border: 2px solid transparent;
+  background-color: transparent;
+  border: 2px solid;
   cursor: pointer;
   color: #333435;
   text-align: center;
   text-decoration: none;
+  background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
   transition: background-color .25s ease-out, box-shadow .25s ease;
 }
 
