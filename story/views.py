@@ -26,9 +26,9 @@ def helloo_world(request):
 def story_list(request):
     storys = Story.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 
-    query = request.GET.get("q")
-    if query:
-        queryset_list = queryset_list.filter(category__icontains=query)
+    #query = request.GET.get("q")
+    #if query:
+    #    queryset_list = queryset_list.filter(category__icontains=query)
     return render(request, 'story/story_list.html', {'storys':storys})
 
 class StoryListbyAuthorView(generic.ListView):
