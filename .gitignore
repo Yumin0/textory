@@ -107,18 +107,3 @@ ENV/
 
 # mypy
 .mypy_cache/
-
-story/migrations/0001_initial.py
-[etc.]
-story/migrations/0002_auto_20171126_2012.py
-[etc.]
-story/migrations/0003_auto_20171216_2309.py
-[etc.]
-story/migrations/0004_auto_20171217_0942.py
-[etc.]
-story/migrations/0005_auto_20171217_1817.py
-[etc.]
-story/migrations/0006_auto_20171217_1914.py
-[etc.]
-story/migrations/0007_auto_20171220_1826.py
-[etc.]

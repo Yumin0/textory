@@ -24,7 +24,7 @@ def helloo_world(request):
     return render(request, 'story/helloo.html',)
 
 def story_list(request):
-    storys = Story.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    storys = Story.objects.filter(created_date__lte=timezone.now()).order_by('created_date')
 
     #query = request.GET.get("q")
     #if query:
@@ -83,7 +83,7 @@ def story_new(request):
            story = form.save(commit=False)
            story.author, _ = StoryAuthor.objects.get_or_create(user=request.user)
            #StoryAuthor = request.user
-           story.published_date = timezone.now()
+           story.created_date = timezone.now()
            story.save()
            return redirect('story_detail', pk=story.pk)
     else:
@@ -98,7 +98,7 @@ def story_edit(request, pk):
             story = form.save(commit=False)
             StoryAuthor = request.user
             #story.author = request.user
-            story.published_date = timezone.now()
+            story.created_date = timezone.now()
             story.save()
             return redirect('story_detail', pk=story.pk)
     else:
