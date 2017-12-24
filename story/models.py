@@ -126,6 +126,7 @@ class Story(models.Model):
         ('我們','我們'),
         ('他','他'),
         ('她','她'),
+        ('它','它'),
     )
     who = models.CharField(max_length = 100,null=True,choices = WHO)
 
