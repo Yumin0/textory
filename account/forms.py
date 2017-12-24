@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 class RegistrationForm(UserCreationForm):
     username = forms.CharField(label='姓名', required=True)
     email = forms.EmailField(label='信箱',required=True)
-    password1 = forms.CharField(label='密碼',required=True, widget=forms.PasswordInput(attrs={'placeholder': '不要設太簡單啊'}))
+    password1 = forms.CharField(label='密碼',required=True, widget=forms.PasswordInput(attrs={'placeholder': '至少8個字元'}))
     password2 = forms.CharField(label='確認密碼',required=True, widget=forms.PasswordInput(attrs={'placeholder': '設太簡單不會過啊'}))
 
     class Meta:

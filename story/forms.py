@@ -4,7 +4,7 @@ from .models import Story, Category
 class StoryForm(forms.ModelForm):
     sb_thing = forms.CharField(widget=forms.TextInput(attrs={'class':'abc1 el-input__inner el-input__inner_m', 'placeholder': '字數上限30字'}))
     sb_story = forms.CharField(widget=forms.TextInput(attrs={'class':'abc2 el-input__inner el-input__inner_m', 'placeholder': '字數上限30字'}))
-    sb_name = forms.CharField(widget=forms.TextInput(attrs={'class':'abc3 el-input__inner el-input__inner_s'}))
+    sb_name = forms.CharField(widget=forms.TextInput(attrs={'class':'abc3 el-input__inner el-input__inner_s', 'placeholder': '輸入人名'}))
 
     #tags = forms.ModelMultipleChoiceField(
     #    to_field_name='slug',
@@ -39,7 +39,7 @@ class StoryForm(forms.ModelForm):
             'sb_about',
             'sb_thing',
             'who',
-            
+
             'sb_story',
             'itjcts',
             'sb_name',
