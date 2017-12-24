@@ -58,6 +58,22 @@ body {
 .header-nav-list li {
   margin-left: 32px;
 }
+
+.message{
+    display:none;
+    color:rgb(130, 107, 254);
+    background:#fff;
+    position:absolute;
+    top: 15px;
+    margin-left: -30px;
+    padding: 10px;
+}
+
+.anchor:hover + .message{
+    display:block !important;
+    z-index:10;
+}
+
 .container {
   width: 100%;
   margin-left: 0;
@@ -84,6 +100,7 @@ body {
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
+  color: rgba(0,0,0,0.54);
 }
 
 .fonts-module-subtitle {
@@ -188,11 +205,12 @@ a {
                 <ul class="header-nav-list">
                 {% if user.is_authenticated %}
                   <li><a class="button_blank button nav-btn" href="{% url 'account:logout' %}">登出</a></li>
+                  <li><a class="button" href="{% url 'story_new' %}"><i class="fa fa-pencil" aria-hidden="true"></i>寫故事</a></li>
                 {% else %}
                   <li><a class="button_blank button nav-btn" href="{% url 'account:login' %}">登入</a></li>
                   <li><a class="button_blank button nav-btn" href="{% url 'account:register' %}">註冊</a></li>
+                  <li><a class="button anchor" href="{% url 'story_new' %}"><i class="fa fa-pencil" aria-hidden="true"></i>寫故事</a><p class="message">登入後才可寫故事！</p></li>
                 {% endif %}
-                  <li><a class="button" href="{% url 'story_new' %}"><i class="fa fa-pencil" aria-hidden="true"></i>寫故事</a></li>
                 </ul>
               </nav>
               </div>
@@ -202,7 +220,7 @@ a {
                 <a href="{% url 'story_detail' pk=story.pk %}">
                   <div class="about_page__tweet">
                     <h1 class="fonts-module-title">{{ story.category }} 的人</h1>
-                    <h2 class="fonts-module-subtitle">{{ story.author }}</h2>
+                    <h2 class="fonts-module-subtitle">Storyteller#{{ story.author.user.id }}</h2>
                     <div class="font-preview-controls-container"></div>
                     <p class="font-preview-text">
                     {{ story.sb_gender }} 是一個 {{ story.sb_adv }} {{ story.category }} 的人，
