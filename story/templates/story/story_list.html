@@ -151,7 +151,9 @@ a {
                 <div class="sidebar-header">
                     <div class="user-info">
                         <span class="user- name">{{ user }}</span>
-                        <span class="user-role">Administrator</span>
+                        {% if user.is_authenticated %}
+                        <span class="user-role">Storyteller#{{ user.id }}</span>
+                        {% endif %}
                     </div>
                 </div><!-- sidebar-header  -->
                 <div class="sidebar-search">
