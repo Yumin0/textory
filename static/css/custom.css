@@ -281,7 +281,7 @@
   position: relative;
   top: 2px;
   left: 20px;
-  font-family: 'Caveat', cursive;
+  z-index: 10000;
   font-size: 35px;
   background:-webkit-linear-gradient(#a18cd1, #fbc2eb);
              -webkit-background-clip: text;
