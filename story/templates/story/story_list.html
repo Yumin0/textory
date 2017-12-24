@@ -194,7 +194,28 @@ a {
               </nav>
               </div>
               <div class="grid-list-tiles" style="margin-top:50px;">
-              
+                {% for story in storys %}
+                <li class="grid-list-tile col-md-4 col-lg-4" style="list-style-type:none;">
+                <a href="{% url 'story_detail' pk=story.pk %}">
+                  <div class="about_page__tweet">
+                    <h1 class="fonts-module-title">{{ story.sb_adj }} 的人</h1>
+                    <h2 class="fonts-module-subtitle">{{ story.author }}</h2>
+                    <div class="font-preview-controls-container"></div>
+                    <p class="font-preview-text">
+                    {{ story.sb_gender }} 是一個 {{ story.sb_adv }} {{ story.sb_adj }} 的人，
+
+                    因為{{ story.sb_gender }} {{ story.sb_about }} {{ story.sb_thing }}
+
+                    {{ story.who }} 曾經做過一件很{{ story.sth_adj }}的事，
+
+                    就是 {{ story.sb_story|truncatechars:15 }}
+                    <br>
+
+                    </p>
+                  </div>
+                </a>
+                </li>
+                {% endfor %}
               </div>
 
             </main><!-- page-content" -->
