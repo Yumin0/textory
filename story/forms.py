@@ -35,11 +35,11 @@ class StoryForm(forms.ModelForm):
         fields = (
             'sb_gender',
             'sb_adv',
-            'sb_adj',
+
             'sb_about',
             'sb_thing',
             'who',
-            'sth_adj',
+            
             'sb_story',
             'itjcts',
             'sb_name',
