@@ -77,6 +77,7 @@ class Story(models.Model):
     SB_GENDER = (
         ('他','他'),
         ('她','她'),
+        ('它','它'),
     )
     sb_gender = models.CharField(max_length = 100,null=True,choices = SB_GENDER, )
 
