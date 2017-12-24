@@ -168,7 +168,7 @@
             <a href="{{ request.build_absolute_url }}" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),'facebook-share-dialog','width=626,height=436');return false;" class="write_button">
               <i class="fa fa-facebook" aria-hidden="true"> 分享到朋友動態牆</i>
             </a>
-
+            <!-- 引入样式
             {% with total_likes=story.users_like.count users_like=story.users_like.all %}
             <span class="count">
                         <span class="total">{{ total_likes }}</span>
@@ -193,7 +193,7 @@
                {% endif %}
                </button>
                <div class="like_count_story" id="heart-counter">{{ story.likes }}</div>
-            </div>
+            </div>-->
             <br><br>
             <span><a href="{% url 'storys_by_author' story.author.pk %}" style="color:#fff;">爆料使者 #{{ story.author.id }}</a></span>
           </div>

@@ -1,9 +1,21 @@
 {% extends 'story/base.html' %}
+{% load staticfiles %}
 {% block head %}
+<link rel="stylesheet" href="{% static 'css/jquery.mCustomScrollbar.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/custom.css' %}">
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-  @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+  @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
   body {
-    background: #F9F9F9;
+    background: #fff;
   }
   .container {
     width: 1280px;
@@ -13,28 +25,41 @@
   .box {
     margin-bottom: 20px;
   }
-
+  .grid-list-tile {
+    z-index: 100000;
+  }
   .about_page__tweet {
-    width: 230px;
-    height: 230px;
-    padding: 25px 30px 40px 25px;
+    border-top: 1px solid #d8d8d8;
+    height: 330px;
     margin: 0 10px 10px 0;
     display: inline-block;
     vertical-align: top;
     overflow: hidden;
     cursor: pointer;
-    background-color: #fff;
-    border: 1px solid #efefef;
-    border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   }
 
-  .about_page__tweet:hover {
-    width: 235px;
-    height: 235px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  .about_page__tweet p:hover {
+    font-weight: 600;
+    background:-webkit-linear-gradient(#a18cd1, #a18cd1);
+               -webkit-background-clip: text;
+               -webkit-text-fill-color: transparent;
   }
+
+  .fonts-module-title {
+    margin-top: 12px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+  .font-preview-text {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 2;
+  }
+
 
   a {
     color: inherit;
@@ -50,30 +75,30 @@
 
     {% if story_list %}
     <h3>我的朋友</h3>
+    <div class="grid-list-tiles" style="margin-top:50px;">
+      {% for story in story_list %}
+                <li class="grid-list-tile col-md-4 col-lg-4" style="list-style-type:none;">
+                <a href="{% url 'story_detail' pk=story.pk %}">
+                  <div class="about_page__tweet">
+                    <h1 class="fonts-module-title">{{ story.sb_name }}</h1>
+                    <div class="font-preview-controls-container"></div>
+                    <p class="font-preview-text">
+                    {{ story.sb_gender }} 是一個 {{ story.sb_adv }} {{ story.category }} 的人，
 
-    {% for story in story_list %}
-    <a href="{% url 'story_detail' pk=story.pk %}" style="font-weight: 700;">
-    <div class="about_page__tweet">
-      <br>
-      {{ story.sb_name }}
-      <br><br>
-      <p style="font-size:14px; font-family: Noto Sans TC; font-weight: 300; color:#878d99;">
-      {{ story.sb_gender }} 是一個 {{ story.sb_adv }} {{ story.sb_adj }} 的人，
+                    因為{{ story.sb_gender }} {{ story.sb_about }} {{ story.sb_thing }}
 
-      因為{{ story.sb_gender }} {{ story.sb_about }} {{ story.sb_thing }}
+                    {{ story.who }} 曾經做過一件很{{ story.adjective_t }}的事，
 
-      {{ story.who }} 曾經做過一件很{{ story.sth_adj }}的事，
+                    就是 {{ story.sb_story|truncatechars:15 }}
+                    <br>
 
-      就是 {{ story.sb_story }}
-      <br>
-
-      </p>
+                    </p>
+                  </div>
+                </a>
+              </li>
+      {% endfor %}
     </div>
-    </a>
-    {% endfor %}
-
     {% else %}
       <p>This blogger hasn't posted anything yet.</p>
     {% endif %}
-  </div>
 {% endblock %}
