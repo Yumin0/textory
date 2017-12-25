@@ -1,25 +1,141 @@
-{% extends 'story/base.html' %}
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <title>Textory</title>
+    <meta charset="UTF-8">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="{% static 'css/story.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+      body{
+        background: #fff;
+      }
+      .page_wrapper{
+        width: 100%;
+        background: #fff;
+      }
+      .close{
+        position: fixed;
+        z-index: 652;
+        top: 16px;
+        right: 16px;
+        font-size: 50px;
+        color: #444242;
+      }
+      .container {
+        width: 100%;
+        max-width: 960px;
+      }
+      .desc {
+        font-size: 35px;
+        color: #878d99;
+        margin-top: 10px;
+      }
+      .abc1{
+        width: 30%;
+        background: #fff;
+        font-size: 20px;
+        height: 50px;
+        border: 1px solid #fff;
+        color: #878d99;
+      }
+      .abc2{
+        width: 40%;
+        background: #fff;
+        font-size: 20px;
+        height: 50px;
+        border: 1px solid #fff;
+        color: #878d99;
+      }
+      .abc3{
+        width: 15%;
+        background: #fff;
+        font-size: 20px;
+        height: 50px;
+        border: 1px solid #fff;
+        color: #878d99;
+      }
 
-{% block body %}
-<div class="container">
-  <h1>Edit story</h1>
-  <form method="POST" class="post-form">
-      {% csrf_token %}
-      {{ form.errors}}
-    <p>
-      {{ form.sb_gender }} 是一個 {{ form.sb_adv }} {{ form.category }} 的人，
-      <br><br>
-      因為{{ form.sb_gender }} {{ form.sb_about }} {{ form.sb_thing }}
-      <br><br>
-      {{ form.who }} 曾經做過一件很{{ form.adjective_t }}，
-      <br><br>
-      就是 {{ form.sb_story }}
-      <br><br>
-      {{ form.itjcts }} 我在說那個人就是你，{{ form.sb_name }} {{ form.mark }}
+      h1 {
+        text-align: center;
+        color: #878d99;
+      }
 
-      <br>
-      <button type="submit" class="save btn btn-default">Save</button>
-    </p>
-  </form>
-</div>
-{% endblock %}
+      p {
+        line-height:2;
+        letter-spacing:3px;
+      }
+      select {
+        background: #fff;
+        font-size: 20px;
+        height: 50px;
+        border: 1px solid #fff;
+        color: #878d99;
+        outline: none;
+      }
+
+      .save{
+        color: #fff;
+        background-image: linear-gradient(to left, #a18cd1 0%, #fbc2eb 100%);
+        height: 50px;
+        font-size: 18px;
+        margin-top: 100px;
+      }
+      .save:hover {
+      background-image: linear-gradient(to left, #c5b0f5 0%, #ffdaf5 100%);
+      color: white;
+      }
+
+      @media screen and (max-width: 400px){
+        .el-input__inner_m {
+          width: 100%;
+        }
+        .el-input__inner_s {
+          width: 50%;
+        }
+
+        h1 {
+          font-size: 25px;
+        }
+        .desc {
+          font-size: 25px;
+        }
+      }
+      </style>
+  </head>
+  <body>
+    <main class="page_wrapper">
+      <a href="{% url 'story_list' %}" class="close fa fa-times-circle fa-6"></a>
+      <div class="container">
+        <h1>我有一個朋友</h1>
+        <br>
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+            {{ form.errors}}
+          <p>
+            {{ form.sb_gender }} <span class="desc">是一個</span> {{ form.sb_adv }} {{ form.category }} <span class="desc">的人，
+
+            因為</span>{{ form.sb_gender }} {{ form.sb_about }} {{ form.sb_thing }}
+
+            {{ form.who }} <span class="desc">曾經做過一件很</span>{{ form.adjective_t }}<span class="desc">的事，
+
+            就是</span> {{ form.sb_story }}
+
+            {{ form.itjcts }} <span class="desc">我在說那個人就是你，{{ form.sb_name }} {{ form.mark }}</span>
+            <br><br>
+            <div class="row align-items-center justify-content-center center-block">
+              <button type="submit" class="col-md-12 col-lg-12 col-xs-12 save btn center-block">儲存</button>
+            </div>
+          </p>
+          <br>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
